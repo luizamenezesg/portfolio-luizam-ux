@@ -1,44 +1,20 @@
-# ✨ Portfólio UX — Luiza Menezes
+<div align="center">
+<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+</div>
 
-Portfólio desenvolvido para apresentar minha atuação em UX Design, Produto Digital e Estratégia, reunindo projetos, processos e experiências voltadas à criação de soluções centradas no usuário.
+# Run and deploy your AI Studio app
 
-## 🚀 Sobre o projeto
+This contains everything you need to run your app locally.
 
-Este projeto foi desenvolvido utilizando React + Vite com foco em:
-- Performance
-- Responsividade
-- Organização escalável de componentes
-- Experiência do usuário
-- Interface moderna e minimalista
+View your app in AI Studio: https://ai.studio/apps/da416da8-5f88-43d9-a9bc-21086a9f88dc
 
-O objetivo do portfólio é comunicar minha visão estratégica em UX, destacando:
-- Design de Produto
-- Arquitetura da Informação
-- Análise Heurística
-- Estruturação de fluxos
-- Design System
-- Pesquisa e organização de insights
-- Decisões orientadas por dados
+## Run Locally
 
----
+**Prerequisites:**  Node.js
 
-## 🛠️ Tecnologias utilizadas
 
-- React
-- TypeScript
-- Vite
-- CSS
-- Figma
-- AI Studio
-
----
-
-## 📁 Estrutura do projeto
-
-```bash
-src/
- ├── components/
- ├── pages/
- ├── assets/
- ├── styles/
- └── App.tsx
+1. Install dependencies:
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`
