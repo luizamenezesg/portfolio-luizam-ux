@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
 const navItems = [
@@ -15,7 +15,6 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const location = useLocation();
-  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
@@ -34,20 +33,6 @@ const Navbar = () => {
       observer.disconnect();
     };
   }, []);
-
-  const handleNavClick = (id: string) => {
-    setIsOpen(false);
-    
-    if (location.pathname !== "/") {
-      navigate("/", { state: { scrollTo: id } });
-      return;
-    }
-    
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   const navColors = !isDarkMode 
     ? "bg-[#1A1A1A] text-white border-white/10" 
@@ -76,12 +61,20 @@ const Navbar = () => {
         <ul className="hidden md:flex items-center gap-8">
           {navItems.map((item) => (
             <li key={item.href}>
-              <button
-                onClick={() => handleNavClick(item.href)}
+              <Link
+                to="/"
+                state={{ scrollTo: item.href }}
+                onClick={(e) => {
+                  if (location.pathname === "/") {
+                    e.preventDefault();
+                    const el = document.getElementById(item.href);
+                    if (el) el.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
                 className={`font-body text-sm transition-colors hover:text-secondary focus:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded px-1 py-0.5 border-0 cursor-pointer ${!isDarkMode || (!scrolled && !isDarkMode) ? "text-white/90" : "text-foreground/80"}`}
               >
                 {item.label}
-              </button>
+              </Link>
             </li>
           ))}
         </ul>
@@ -102,12 +95,21 @@ const Navbar = () => {
           <ul className="flex flex-col px-6 py-4 gap-1">
             {navItems.map((item) => (
               <li key={item.href}>
-                <button
-                  onClick={() => handleNavClick(item.href)}
-                  className={`w-full text-left py-3 px-2 font-body text-base transition-colors rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-ring min-h-[44px] ${!isDarkMode ? "text-white/90 hover:text-primary" : "text-foreground hover:text-primary"}`}
+                <Link
+                  to="/"
+                  state={{ scrollTo: item.href }}
+                  onClick={(e) => {
+                    setIsOpen(false);
+                    if (location.pathname === "/") {
+                      e.preventDefault();
+                      const el = document.getElementById(item.href);
+                      if (el) el.scrollIntoView({ behavior: "smooth" });
+                    }
+                  }}
+                  className={`block w-full text-left py-3 px-2 font-body text-base transition-colors rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-ring min-h-[44px] ${!isDarkMode ? "text-white/90 hover:text-primary" : "text-foreground hover:text-primary"}`}
                 >
                   {item.label}
-                </button>
+                </Link>
               </li>
             ))}
           </ul>
