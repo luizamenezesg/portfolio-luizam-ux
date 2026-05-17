@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
 const navItems = [
-{ label: "Sobre", href: "/#sobre" },
-{ label: "Competências", href: "/#competencias" },
-{ label: "Projetos", href: "/#projetos" },
-{ label: "Contato", href: "/#contato" }];
+  { label: "Sobre", href: "sobre" },
+  { label: "Competências", href: "competencias" },
+  { label: "Projetos", href: "projetos" },
+  { label: "Contato", href: "contato" }
+];
 
 
 const Navbar = () => {
@@ -14,6 +15,7 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
@@ -33,13 +35,14 @@ const Navbar = () => {
     };
   }, []);
 
-  const handleNavClick = (href: string) => {
+  const handleNavClick = (id: string) => {
     setIsOpen(false);
+    
     if (location.pathname !== "/") {
-      window.location.href = href;
+      navigate("/", { state: { scrollTo: id } });
       return;
     }
-    const id = href.replace("/#", "");
+    
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });

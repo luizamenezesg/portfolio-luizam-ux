@@ -20,7 +20,8 @@ const ProjectLayout = ({
         <div className="section-padding pb-8">
           <div className="container-narrow">
             <Link
-              to="/#projetos"
+              to="/"
+              state={{ scrollTo: "projetos" }}
               className="inline-flex items-center gap-2 font-body text-sm text-muted-foreground hover:text-primary transition-colors mb-10 min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded"
             >
               <ArrowLeft size={16} />

@@ -259,7 +259,8 @@ const Project2 = () => {
         <header className="px-6 md:px-12 lg:px-20 pb-8">
           <div className="max-w-[960px] mx-auto">
             <Link
-              to="/#projetos"
+              to="/"
+              state={{ scrollTo: "projetos" }}
               className="inline-flex items-center gap-2 font-body text-sm text-muted-foreground hover:text-secondary transition-colors mb-10 min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded"
             >
               <ArrowLeft size={16} />
