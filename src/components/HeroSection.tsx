@@ -93,7 +93,7 @@ const HeroSection = () => {
               </button>
 
               <a
-                href={`${import.meta.env.BASE_URL}cv-luiza-menezes.pdf`}
+                href={`${import.meta.env.BASE_URL}curriculo.pdf`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 border border-primary text-primary font-body font-medium text-sm px-6 py-3 rounded-lg hover:bg-primary hover:text-primary-foreground transition-all duration-200 min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 border-solid">

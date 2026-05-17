@@ -1,5 +1,8 @@
 {
-  "name": "Meu portfólio",
-  "description": "",
-  "requestFramePermissions": []
+  "name": "Luiza Menezes - UX Designer",
+  "description": "Portfólio de Luiza Menezes, UX Designer com foco em estratégia de produto, experiência do usuário e design systems.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }
