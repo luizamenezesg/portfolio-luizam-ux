@@ -608,6 +608,139 @@ const Project1 = () => {
 
             <Divider />
 
+            {/* ─ MVP funcional ─ */}
+            <section>
+              <SectionLabel>Desenvolvimento</SectionLabel>
+              <SectionTitle>Do protótipo ao MVP funcional</SectionTitle>
+              <Body>
+                <p>
+                  Para validar se a solução realmente resolvia o problema, transformei o protótipo de alta fidelidade em um produto funcional. Usei prompt engineering no Figma Make (IA) para gerar o código a partir das telas e de um documento de requisitos baseado na pesquisa.
+                </p>
+              </Body>
+              <Insight label="Em uma frase">
+                Web app que compara preços de supermercado entre mercados próximos, calcula o preço por kg, litro ou unidade para comparar embalagens de tamanhos diferentes e ajuda a montar e compartilhar listas de compras.
+              </Insight>
+
+              <SubTitle>Requisitos funcionais</SubTitle>
+              <BulletList
+                items={[
+                  "Busca sem acento, com filtros por categoria, mercado, preço, distância e promoções",
+                  "Ordenação por preço por unidade, preço total, distância ou avaliação",
+                  "Cálculo automático do preço por unidade (R$/kg, R$/L, R$/un) com selo de \"Melhor custo-benefício\"",
+                  "Localização do usuário (GPS ou cidade padrão) com raio de busca",
+                  "Comparação de até 6 produtos lado a lado",
+                  "Listas de compras com CRUD completo, totais, economia estimada e o mercado onde a lista sai mais barata",
+                  "Compartilhamento por WhatsApp, e-mail ou link que abre a lista",
+                  "Avaliações com estrelas e comentário, favoritos e histórico de preço de 90 dias",
+                ]}
+              />
+
+              <SubTitle>Requisitos não funcionais</SubTitle>
+              <BulletList
+                items={[
+                  "Responsivo, com barra de navegação inferior no mobile",
+                  "Acessível: aria-labels, foco visível e estrelas operáveis por teclado",
+                  "Dados persistem entre visitas",
+                  "Código tipado e regra de cálculo coberta por testes",
+                  "Arquitetura preparada para trocar os dados simulados por uma API real",
+                ]}
+              />
+
+              <SubTitle>Tecnologias</SubTitle>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 my-6">
+                {[
+                  { name: "Figma Make (IA)", role: "Geração do código a partir de prompt e telas" },
+                  { name: "TypeScript", role: "Tipagem dos modelos de dados" },
+                  { name: "React 19", role: "Componentes e estado da interface" },
+                  { name: "React Router 7", role: "11 rotas com URL própria" },
+                  { name: "Tailwind CSS 4", role: "Identidade visual do Figma" },
+                  { name: "Lucide React", role: "Ícones" },
+                  { name: "Vite", role: "Build e servidor de desenvolvimento" },
+                  { name: "Vitest", role: "Testes unitários" },
+                ].map((tech) => (
+                  <div key={tech.name} className="rounded-xl border border-border bg-card p-4">
+                    <h4 className="font-heading text-sm font-semibold text-foreground">{tech.name}</h4>
+                    <p className="font-body text-sm text-muted-foreground mt-1">{tech.role}</p>
+                  </div>
+                ))}
+              </div>
+
+              <SubTitle>Arquitetura</SubTitle>
+              <Body>
+                <p>
+                  É uma SPA (single-page application) que roda inteiramente no navegador. O papel do backend é cumprido por uma camada de serviços, separada da interface pelos padrões Repository e Service:
+                </p>
+              </Body>
+              <BulletList
+                items={[
+                  "Modelo de dados tipado: Produto, Mercado, Oferta, Lista",
+                  "Base simulada: 9 mercados reais da Baixada Santista e 41 produtos em 12 categorias, com histórico de preço",
+                  "Serviço de preços: busca, preço por unidade, distância e melhor oferta",
+                  "Repositório: persistência no localStorage, isolada para ser trocada por um banco (ex.: Supabase)",
+                  "Estado global com Context API: listas, comparação, favoritos e localização",
+                ]}
+              />
+
+              <SubTitle>Lógica de negócio</SubTitle>
+              <BulletList
+                items={[
+                  "Preço por unidade: converte g→kg e ml→L antes de dividir (R$ 10 em 500 g = R$ 20/kg)",
+                  "Distância até o mercado calculada pela fórmula de Haversine",
+                  "Melhor mercado da lista: soma a lista em cada mercado e escolhe o menor total",
+                  "Busca sem acento por normalização Unicode e moeda no padrão brasileiro (Intl)",
+                  "Link compartilhável: a lista vai codificada em Base64 na própria URL, sem precisar de servidor",
+                ]}
+              />
+
+              <SubTitle>APIs</SubTitle>
+              <Body>
+                <p>
+                  O app não usa APIs externas pagas nem com chave. Usa APIs nativas do navegador (Geolocalização, localStorage, Área de transferência e Intl), deep links para WhatsApp (wa.me) e e-mail (mailto) e imagens via CDN do Unsplash.
+                </p>
+              </Body>
+
+              <SubTitle>Heurísticas de Nielsen aplicadas</SubTitle>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 my-6">
+                {[
+                  { h: "Status do sistema", d: "Skeleton no carregamento, toasts de confirmação e contador da comparação" },
+                  { h: "Mundo real", d: "\"O kg sai por R$ 4,98\" e \"1,4 km de você\"" },
+                  { h: "Controle e liberdade", d: "Renomear e duplicar listas, listas ilimitadas e \"Desfazer\" ao excluir" },
+                  { h: "Consistência", d: "Mesmo rótulo para a mesma ação e amarelo em toda ação principal" },
+                  { h: "Prevenção de erros", d: "Confirmação antes de excluir, validação da avaliação e limite na comparação" },
+                  { h: "Reconhecimento", d: "Favoritos e filtros lembrados, selo de melhor custo-benefício" },
+                  { h: "Eficiência", d: "Adicionar à lista a partir de 3 telas e compartilhar em 1 clique" },
+                  { h: "Minimalismo", d: "Cards limpos, com o preço em destaque" },
+                  { h: "Recuperação de erros", d: "Tela sem resultados com opção de limpar filtros, página 404 e localização padrão" },
+                  { h: "Ajuda", d: "Página \"Sobre nós\" e tutorial no perfil" },
+                ].map((item, i) => (
+                  <div key={item.h} className="flex items-start gap-3 rounded-xl border border-border bg-card p-4">
+                    <span className="font-heading text-lg font-bold text-primary/40 leading-none mt-0.5">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <div>
+                      <h4 className="font-heading text-sm font-semibold text-foreground">{item.h}</h4>
+                      <p className="font-body text-sm text-muted-foreground mt-1">{item.d}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <Insight label="Da análise heurística para o produto">
+                As falhas encontradas no concorrente (listas que não podiam ser renomeadas, limite de três listas, link de compartilhamento que não abria e exclusão sem desfazer) viraram requisitos explícitos do MVP.
+              </Insight>
+
+              <SubTitle>Limitações e próximos passos</SubTitle>
+              <BulletList
+                items={[
+                  "Os preços são simulados; o próximo passo é integrar uma fonte real de preços",
+                  "Os dados ficam no navegador; login e sincronização entre dispositivos viriam com um banco como o Supabase",
+                  "A lista compartilhada é uma cópia, não uma edição colaborativa em tempo real",
+                  "Validar o MVP com uma nova rodada de testes de usabilidade",
+                ]}
+              />
+            </section>
+
+            <Divider />
+
             {/* ─ Resultados ─ */}
             <section className="mb-8">
               <SectionLabel>Conclusão</SectionLabel>
