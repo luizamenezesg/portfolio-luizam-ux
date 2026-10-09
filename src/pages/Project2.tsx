@@ -286,7 +286,7 @@ const Project2 = () => {
           title="Centro de Línguas Fatec: um hub acadêmico para o aluno"
           subtitle="A gestão acadêmica do Centro de Línguas da Fatec Baixada Santista estava espalhada entre Teams, e-mail e OneDrive. Projetei um sistema único onde o aluno acompanha cursos, tarefas, notas, agenda e certificados sem depender da secretaria."
           facts={[
-            { label: "Meu papel", value: "UX e Product Designer em projeto coletivo, trabalho voluntário" },
+            { label: "Meu papel", value: "UX e Product Designer, trabalho voluntário. Requisitos levantados em grupo; pesquisa, arquitetura, wireframes, protótipo e decisões de design são meus" },
             { label: "Quando", value: "Protótipo em 2024 · MVP funcional em 2026" },
             { label: "Para quem", value: "Alunos, professores e coordenação do Centro de Línguas (Centro Paula Souza)" },
             { label: "Plataforma", value: "Sistema web, pensado para desktop e responsivo para celular" },
@@ -320,7 +320,7 @@ const Project2 = () => {
                 <Card>
                   <CardTitle as="h3">O que eu fiz</CardTitle>
                   <CardText>
-                    Levantei requisitos com alunos, professores e coordenação, organizei a arquitetura da informação pelas tarefas do aluno (e não pelos departamentos), desenhei os fluxos, os wireframes e a interface, e montei um protótipo navegável.
+                    Levantei os requisitos em grupo, com alunos, professores e coordenação. O trabalho de UX foi meu: conduzi a pesquisa, organizei a arquitetura da informação pelas tarefas do aluno (e não pelos departamentos), desenhei os fluxos, os wireframes e a interface, e montei um protótipo navegável.
                   </CardText>
                 </Card>
                 <Card>
@@ -402,7 +402,7 @@ const Project2 = () => {
                   Antes de propor qualquer solução, conversei com alunos, professores e coordenação para entender como cada um lidava com os processos no dia a dia.
                 </p>
                 <p>Usei um questionário online para entender quais requisitos eram essenciais no sistema.</p>
-                <p>Cada necessidade virou um requisito. Na tabela, mostro onde cada um foi resolvido no sistema:</p>
+                <p>O levantamento de requisitos foi feito em grupo. A partir dele, decidi onde cada requisito seria resolvido no sistema:</p>
               </Body>
 
               <RequirementsTable />
