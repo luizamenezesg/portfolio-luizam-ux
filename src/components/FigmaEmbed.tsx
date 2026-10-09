@@ -4,12 +4,14 @@ import { ExternalLink } from "lucide-react";
 interface FigmaEmbedProps {
   title: string;
   protoUrl: string;
+  /** Nível do título, para respeitar a hierarquia da página. */
+  as?: "h3" | "h4";
 }
 
 const getEmbedUrl = (url: string) =>
   url.replace("figma.com/proto/", "figma.com/embed?embed_host=share&url=https://www.figma.com/proto/");
 
-const FigmaEmbed = ({ title, protoUrl }: FigmaEmbedProps) => {
+const FigmaEmbed = ({ title, protoUrl, as: Heading = "h4" }: FigmaEmbedProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -26,9 +28,9 @@ const FigmaEmbed = ({ title, protoUrl }: FigmaEmbedProps) => {
 
   return (
     <div ref={ref} className="mt-6">
-      <h4 className="font-heading text-base font-semibold text-foreground mb-3">
+      <Heading className="font-heading text-base font-semibold text-foreground mb-3">
         {title}
-      </h4>
+      </Heading>
       <div className="rounded-xl border border-border bg-card shadow-sm overflow-hidden">
         {visible ? (
           <iframe

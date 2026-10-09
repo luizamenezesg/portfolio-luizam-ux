@@ -1,92 +1,12 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FigmaEmbed from "@/components/FigmaEmbed";
-
-/* ── Reusable blocks ── */
-
-const Quote = ({ children }: { children: React.ReactNode }) => (
-  <blockquote className="my-12 md:my-16 border-l-4 border-primary pl-6 md:pl-8 py-2">
-    <p className="font-heading text-xl md:text-2xl font-semibold text-foreground/90 leading-relaxed italic">
-      {children}
-    </p>
-  </blockquote>
-);
-
-const Insight = ({ label, children }: { label: string; children: React.ReactNode }) => (
-  <div className="rounded-2xl bg-accent/60 border border-border p-6 md:p-8 my-8">
-    <span className="font-body text-[11px] tracking-[0.2em] uppercase text-primary font-semibold">
-      {label}
-    </span>
-    <p className="font-body text-base text-foreground/85 leading-relaxed mt-2">{children}</p>
-  </div>
-);
-
-const SectionLabel = ({ children }: { children: React.ReactNode }) => (
-  <p className="font-body text-xs tracking-[0.25em] uppercase text-primary font-semibold mb-3">
-    {children}
-  </p>
-);
-
-const SectionTitle = ({ children }: { children: React.ReactNode }) => (
-  <h2 className="font-heading text-[28px] md:text-[36px] font-bold text-foreground leading-tight mb-6">
-    {children}
-  </h2>
-);
-
-const SubTitle = ({ children }: { children: React.ReactNode }) => (
-  <h3 className="font-heading text-xl md:text-2xl font-semibold text-foreground mb-4 mt-10">
-    {children}
-  </h3>
-);
-
-const Body = ({ children }: { children: React.ReactNode }) => (
-  <div className="font-body text-base text-foreground/85 leading-[1.8] space-y-5">
-    {children}
-  </div>
-);
-
-const BulletList = ({ items }: { items: string[] }) => (
-  <ul className="space-y-3 my-5">
-    {items.map((item) => (
-      <li key={item} className="flex items-start gap-3 font-body text-[15px] text-foreground/85 leading-relaxed">
-        <span className="w-1.5 h-1.5 rounded-full bg-primary mt-[9px] flex-shrink-0" />
-        {item}
-      </li>
-    ))}
-  </ul>
-);
-
-const Divider = () => (
-  <div className="flex items-center justify-center my-16 md:my-20">
-    <div className="w-12 h-[2px] bg-primary/30 rounded-full" />
-  </div>
-);
-
-const NumberedItem = ({ number, title, items }: { number: string; title: string; items: string[] }) => (
-  <div className="rounded-xl border border-border bg-card p-6 space-y-3">
-    <div className="flex items-center gap-3">
-      <span className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-heading text-sm font-bold flex-shrink-0">
-        {number}
-      </span>
-      <h4 className="font-heading text-base font-semibold text-foreground">{title}</h4>
-    </div>
-    <ul className="space-y-1.5 pl-11">
-      {items.map((item) => (
-        <li key={item} className="font-body text-sm text-foreground/75 leading-relaxed">{item}</li>
-      ))}
-    </ul>
-  </div>
-);
-
-const FlowItem = ({ title, flow }: { title: string; flow: string }) => (
-  <div className="rounded-xl bg-accent/40 border border-border p-5">
-    <p className="font-heading text-sm font-semibold text-foreground mb-1.5">{title}</p>
-    <p className="font-body text-sm text-foreground/70">{flow}</p>
-  </div>
-);
+import { Body, BulletList, Divider, Insight, Quote, SectionLabel, SectionTitle, SubTitle } from "@/components/case/Typography";
+import { FlowItem, NumberedItem } from "@/components/case/Cards";
+import { CaseNav } from "@/components/case/CaseNav";
 
 const Project3 = () => {
   useEffect(() => {
@@ -408,6 +328,7 @@ const Project3 = () => {
               </Insight>
             </section>
 
+            <CaseNav current="/projeto/planejadin" />
           </div>
         </div>
       </main>
