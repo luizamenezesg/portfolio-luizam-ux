@@ -22,8 +22,11 @@ import telaHome from "@/assets/tela-home.png";
 import telaCertificados from "@/assets/tela-certificados.png";
 import telaTarefas from "@/assets/tela-tarefas.png";
 
-/* TODO: Luiza preencher — [PREENCHER] link do MVP publicado. Enquanto estiver vazio, a seção do MVP não aparece. */
-const MVP_URL = "";
+/* Se ficar vazio, a seção do MVP e o botão do hero não aparecem. */
+const MVP_URL = "https://unify-wifi-52683631.figma.site";
+
+/* TODO: Luiza preencher — [PREENCHER] link público do guia de estilo do Centro Paula Souza. */
+const CPS_GUIDE_URL = "";
 
 /* Screenshots do MVP: basta salvar gestao-mvp-1.jpg, gestao-mvp-2.jpg e gestao-mvp-3.jpg em src/assets. */
 const MVP_SHOTS = Object.entries(
@@ -212,23 +215,31 @@ const WireframePair = ({
   </figure>
 );
 
+const SLAB = { fontFamily: "'Roboto Slab', serif" };
+const ROBOTO = { fontFamily: "'Roboto', sans-serif" };
+
+/** Escala do guia do CPS: Roboto Slab para títulos e Roboto para textos. */
 const TypeSpecimen = () => (
-  <div className="my-8 rounded-xl border border-border bg-card p-6 md:p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+  <div className="my-8 rounded-xl border border-border bg-card p-6 md:p-8 space-y-6">
     <div>
       <p className="font-body text-[11px] tracking-[0.2em] uppercase text-muted-foreground mb-3">Roboto Slab — títulos</p>
-      <p className="text-4xl text-foreground leading-tight" style={{ fontFamily: "'Roboto Slab', serif", fontWeight: 500 }}>
-        Aa
-      </p>
-      <p className="text-2xl text-foreground mt-2" style={{ fontFamily: "'Roboto Slab', serif" }}>
-        Meus Certificados
-      </p>
+      <div className="space-y-3">
+        {[
+          { label: "H1 — 36px", size: 36, text: "Minha Agenda" },
+          { label: "H2 — 24px", size: 24, text: "Próximos Eventos" },
+          { label: "H3 — 20px", size: 20, text: "Inglês - Básico 2" },
+        ].map((t) => (
+          <div key={t.label}>
+            <span className="font-body text-xs text-muted-foreground">{t.label}</span>
+            <p className="text-foreground leading-tight" style={{ ...SLAB, fontSize: t.size }}>{t.text}</p>
+          </div>
+        ))}
+      </div>
     </div>
-    <div>
+    <div className="pt-6 border-t border-border">
       <p className="font-body text-[11px] tracking-[0.2em] uppercase text-muted-foreground mb-3">Roboto — texto</p>
-      <p className="text-4xl text-foreground leading-tight" style={{ fontFamily: "'Roboto', sans-serif" }}>
-        Aa
-      </p>
-      <p className="text-base text-foreground/85 mt-3" style={{ fontFamily: "'Roboto', sans-serif" }}>
+      <span className="font-body text-xs text-muted-foreground">Corpo — 16px</span>
+      <p className="text-foreground/85" style={{ ...ROBOTO, fontSize: 16 }}>
         Entrega até 15 de fevereiro às 19h. Envie aqui sua atividade.
       </p>
     </div>
@@ -277,12 +288,14 @@ const Project2 = () => {
           facts={[
             // TODO: Luiza preencher — confirmar se o projeto foi individual ou em equipe
             { label: "Meu papel", value: "UX e Product Designer, trabalho voluntário [CONFIRMAR: projeto individual ou em equipe? com quem?]" },
-            // TODO: Luiza preencher — ano do protótipo e confirmação do MVP
-            { label: "Quando", value: "[PREENCHER: ano do protótipo] · MVP funcional em 2026 [CONFIRMAR]" },
+            // TODO: Luiza preencher — ano do protótipo
+            { label: "Quando", value: "[PREENCHER: ano do protótipo] · MVP funcional em 2026" },
             { label: "Para quem", value: "Alunos, professores e coordenação do Centro de Línguas (Centro Paula Souza)" },
             { label: "Plataforma", value: "Sistema web (desktop)" },
             { label: "Ferramentas", value: "Figma e FigJam · Figma Make com IA (MVP)" },
+            { label: "Base visual", value: "Guia de estilo do Centro Paula Souza" },
           ]}
+          actions={MVP_URL ? <LinkButton href={MVP_URL}>Ver MVP</LinkButton> : undefined}
           cover={{
             src: telaHome,
             ...SIZE_SMALL,
@@ -315,8 +328,11 @@ const Project2 = () => {
                 <Card>
                   <CardTitle as="h3">Resultado</CardTitle>
                   <CardText>
-                    {/* TODO: Luiza preencher — confirmar o MVP */}
-                    Um hub acadêmico com 7 telas principais em alta fidelidade e protótipo navegável no Figma; em 2026, um MVP funcional gerado com IA a partir dos requisitos. [CONFIRMAR MVP]
+                    Um hub acadêmico com 7 telas principais em alta fidelidade e protótipo navegável no Figma; em 2026, um MVP funcional gerado com IA a partir dos requisitos, publicado em{" "}
+                    <a href={MVP_URL} target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-2 hover:text-secondary break-all">
+                      unify-wifi-52683631.figma.site
+                    </a>
+                    .
                   </CardText>
                 </Card>
               </div>
@@ -335,7 +351,7 @@ const Project2 = () => {
                 {[
                   { label: "UX Research", items: ["Levantamento de requisitos com stakeholders", "Mapeamento de processos atuais", "Identificação de dores"] },
                   { label: "Product Design", items: ["Arquitetura da informação", "Priorização", "Fluxos de navegação", "Definição de MVP", "Métricas de sucesso"] },
-                  { label: "UI Design", items: ["Wireframes", "Interface em alta fidelidade", "Sistema visual", "Protótipo navegável"] },
+                  { label: "UI Design", items: ["Wireframes", "Interface em alta fidelidade", "Sistema visual", "Aplicação de design system institucional", "Protótipo navegável"] },
                 ].map((group) => (
                   <div key={group.label} className="grid grid-cols-1 md:grid-cols-[160px_1fr] gap-1 md:gap-4 items-start p-5">
                     <h4 className="font-heading text-sm font-semibold text-foreground md:mt-4">{group.label}</h4>
@@ -538,29 +554,52 @@ const Project2 = () => {
 
             <Divider />
 
-            {/* 8. Sistema visual */}
+            {/* 8. Sistema visual: guia de estilo do Centro Paula Souza */}
             <section>
-              <SectionLabel>UI</SectionLabel>
-              <SectionTitle>Sistema visual</SectionTitle>
+              <SectionLabel>Sistema visual</SectionLabel>
+              <SectionTitle>Consistência com a identidade institucional</SectionTitle>
               <Body>
-                {/* TODO: Luiza preencher — confirmar a origem institucional do vinho e do petróleo */}
                 <p>
-                  O vinho e o petróleo vêm da identidade institucional da Fatec e do Centro Paula Souza [CONFIRMAR]. As cores de status (verde, vermelho e amarelo) orientam a próxima ação.
+                  O Centro de Línguas pertence ao Centro Paula Souza (CPS). Para o sistema parecer parte do ecossistema institucional, e não um produto à parte, usei o guia de estilo público do CPS como base: cores, tipografia e o uso de cores de feedback para status. Em vez de criar uma identidade nova, adaptei um design system existente às necessidades do aluno.
                 </p>
               </Body>
 
+              <Insight label="Decisão de design">
+                Seguir o guia do CPS reduz o esforço de aprovação institucional, mantém a confiança do aluno (ele reconhece a marca) e facilita a evolução do sistema por outras equipes.
+              </Insight>
+
               <SubTitle>Cores</SubTitle>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6 mb-8">
-                <ColorSwatch color="#7D0000" name="Vinho" description="Cabeçalho e menu lateral do curso" />
-                <ColorSwatch color="#B20001" name="Vermelho de destaque" description="Linhas dos títulos e ações de alerta, como Enviar Dúvida" />
-                <ColorSwatch color="#005C6D" name="Petróleo" description="Títulos, links e rodapé" />
-                <ColorSwatch color="#F8F8F8" name="Fundo" description="Fundo das páginas" outlined />
-                <ColorSwatch color="#9FC438" name="Verde de ação" description="Ação principal, como Enviar Atividade" />
-                <ColorSwatch color="#FFD800" name="Amarelo de evento" description="Eventos na agenda" />
+              <p className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground font-semibold mb-4 mt-6">Principais</p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                <ColorSwatch color="#B20000" name="Vermelho" description="vermelho-base · curso ativo e linhas sob os títulos" />
+                <ColorSwatch color="#7E0000" name="Vermelho-escuro" description="vermelho-escuro-10 · header e menu lateral" />
+                <ColorSwatch color="#005C6D" name="Azul" description="azul-base · footer e links" />
+                <ColorSwatch color="#004854" name="Títulos" description="primario-titulos-hover · títulos de página" />
+              </div>
+              <p className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground font-semibold mb-4">Neutras</p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                <ColorSwatch color="#F8F8F8" name="Prata" description="prata-base · fundo" outlined />
+                <ColorSwatch color="#E6E6E6" name="Cinza" description="hover · cards" outlined />
+                <ColorSwatch color="#666666" name="Cinza texto" description="Texto corrido" />
+              </div>
+              <p className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground font-semibold mb-4">Auxiliares e feedback (status)</p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                <ColorSwatch color="#A0C340" name="Verde" description="verde-base · enviar atividade, entregue" />
+                <ColorSwatch color="#D32719" name="Cancelado" description="Enviar dúvida, atrasado" />
+                {/* TODO: Luiza preencher — confirmar o token e o hex do amarelo de eventos no guia do CPS */}
+                <ColorSwatch color="#FFD800" name="Amarelo" description="Eventos na agenda [CONFIRMAR token]" />
               </div>
 
               <SubTitle>Tipografia</SubTitle>
               <TypeSpecimen />
+
+              <div className="flex flex-wrap gap-3 mt-6">
+                {CPS_GUIDE_URL ? (
+                  <LinkButton href={CPS_GUIDE_URL}>Ver guia de estilo do CPS</LinkButton>
+                ) : (
+                  <p className="font-body text-sm text-muted-foreground">[PREENCHER: link do guia de estilo do CPS]</p>
+                )}
+              </div>
             </section>
 
             <Divider />
@@ -604,6 +643,12 @@ const Project2 = () => {
                           onOpen={openLightbox}
                         />
                       ))}
+                    </div>
+                  )}
+                  {/* Repete o botão no fim, como no Project1, quando há screenshots entre os dois. */}
+                  {MVP_SHOTS.length > 0 && (
+                    <div className="flex flex-wrap gap-3 mt-8">
+                      <LinkButton href={MVP_URL} primary>Ver MVP em funcionamento</LinkButton>
                     </div>
                   )}
                 </section>

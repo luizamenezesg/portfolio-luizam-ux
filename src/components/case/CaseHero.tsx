@@ -21,6 +21,7 @@ export const CaseHero = ({
   subtitle,
   facts,
   cover,
+  actions,
   onOpen,
 }: {
   label: string;
@@ -28,6 +29,8 @@ export const CaseHero = ({
   subtitle: React.ReactNode;
   facts: Fact[];
   cover: Cover;
+  /** Botões ao lado da ficha, como o link do MVP. */
+  actions?: React.ReactNode;
   onOpen: OpenImage;
 }) => (
   <>
@@ -49,7 +52,7 @@ export const CaseHero = ({
 
         <dl
           className={`grid grid-cols-2 gap-4 mt-10 ${
-            facts.length === 5 ? "md:grid-cols-3 lg:grid-cols-5" : "md:grid-cols-4"
+            facts.length === 5 ? "md:grid-cols-3 lg:grid-cols-5" : facts.length === 6 ? "md:grid-cols-3" : "md:grid-cols-4"
           }`}
         >
           {facts.map((item) => (
@@ -59,6 +62,8 @@ export const CaseHero = ({
             </div>
           ))}
         </dl>
+
+        {actions && <div className="flex flex-wrap gap-3 mt-8">{actions}</div>}
       </div>
     </header>
 
