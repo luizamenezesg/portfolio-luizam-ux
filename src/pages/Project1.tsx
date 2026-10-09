@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, ExternalLink, X } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FigmaEmbed from "@/components/FigmaEmbed";
@@ -15,6 +15,12 @@ import benchmarkingImg from "@/assets/project1-benchmarking.png";
 import csdCertezasImg from "@/assets/project1-csd-certezas.png";
 import csdSuposicoesImg from "@/assets/project1-csd-suposicoes.png";
 import csdDuvidasImg from "@/assets/project1-csd-duvidas.png";
+import mvpHomeImg from "@/assets/project1-mvp-home.jpg";
+import mvpBuscaImg from "@/assets/project1-mvp-busca.jpg";
+import mvpProdutoImg from "@/assets/project1-mvp-produto.jpg";
+import mvpCompararImg from "@/assets/project1-mvp-comparar.jpg";
+import mvpListaImg from "@/assets/project1-mvp-lista.jpg";
+import mvpAvaliacoesImg from "@/assets/project1-mvp-avaliacoes.jpg";
 
 /* ── Lightbox ── */
 
@@ -213,6 +219,75 @@ const FontSpecimen = () => (
   </div>
 );
 
+/* ── new blocks for the recruiter-oriented case ── */
+
+const Card = ({ children, className = "" }: { key?: React.Key; children: React.ReactNode; className?: string }) => (
+  <div className={`rounded-xl border border-border bg-card p-5 ${className}`}>{children}</div>
+);
+
+const CardTitle = ({ children }: { children: React.ReactNode }) => (
+  <h4 className="font-heading text-sm font-semibold text-foreground">{children}</h4>
+);
+
+const CardText = ({ children }: { children: React.ReactNode }) => (
+  <p className="font-body text-sm text-muted-foreground mt-1 leading-relaxed">{children}</p>
+);
+
+const Chips = ({ items }: { items: string[] }) => (
+  <div className="flex flex-wrap gap-2 mt-3">
+    {items.map((item) => (
+      <span
+        key={item}
+        className="font-body text-xs text-foreground/80 bg-accent/70 border border-border rounded-full px-3 py-1"
+      >
+        {item}
+      </span>
+    ))}
+  </div>
+);
+
+const Screenshot = ({
+  src,
+  alt,
+  caption,
+  onOpen,
+}: {
+  src: string;
+  alt: string;
+  caption: string;
+  onOpen: (src: string, alt: string) => void;
+}) => (
+  <figure className="my-6">
+    <ClickableImage
+      src={src}
+      alt={alt}
+      className="w-full rounded-xl border border-border shadow-sm"
+      onOpen={onOpen}
+    />
+    <figcaption className="font-body text-sm text-muted-foreground mt-3 leading-relaxed">{caption}</figcaption>
+  </figure>
+);
+
+const BeforeAfter = ({ rows }: { rows: { before: string; after: string; why: string }[] }) => (
+  <div className="my-8 rounded-xl border border-border overflow-hidden">
+    <div className="hidden md:grid grid-cols-[1fr_1fr_1.3fr] bg-accent/60 px-5 py-3 font-body text-[11px] tracking-[0.2em] uppercase text-primary font-semibold">
+      <span>Antes</span>
+      <span>Depois</span>
+      <span>Por quê</span>
+    </div>
+    {rows.map((row) => (
+      <div
+        key={row.after}
+        className="grid grid-cols-1 md:grid-cols-[1fr_1fr_1.3fr] gap-1 md:gap-4 px-5 py-4 border-t border-border first:border-t-0 md:first:border-t bg-card"
+      >
+        <span className="font-body text-sm text-muted-foreground line-through decoration-muted-foreground/50">{row.before}</span>
+        <span className="font-body text-sm font-semibold text-foreground">{row.after}</span>
+        <span className="font-body text-sm text-foreground/75">{row.why}</span>
+      </div>
+    ))}
+  </div>
+);
+
 /* ── page ── */
 
 const Project1 = () => {
@@ -255,47 +330,110 @@ const Project1 = () => {
               <ArrowLeft size={16} />
               Voltar aos projetos
             </Link>
-            <SectionLabel>UX Research • Interfaces Responsivas</SectionLabel>
+            <SectionLabel>UX Research • Product Design • UI Design • MVP</SectionLabel>
             <h1 className="font-heading text-foreground text-[40px] md:text-[52px] font-bold leading-[1.1] mb-6">
-              Plataforma de<br />Comparação de Preços
+              Economizando: comparação<br className="hidden md:block" /> de preços de supermercado
             </h1>
-            <p className="font-body text-lg text-muted-foreground max-w-[600px] leading-relaxed">
-              Desenvolvimento de solução focada em eficiência e redução de carga cognitiva através de pesquisa qualitativa e testes de usabilidade.
+            <p className="font-body text-lg text-muted-foreground max-w-[680px] leading-relaxed">
+              Da pesquisa com usuários a um MVP funcional: uma plataforma que mostra onde cada produto está mais barato perto de você, calcula o preço por kg ou litro e organiza listas de compras compartilháveis.
             </p>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10">
+              {[
+                { label: "Meu papel", value: "UX Researcher e Product Designer (projeto individual)" },
+                { label: "Contexto", value: "Formação em UX Design (EBAC) + MVP próprio" },
+                { label: "Plataformas", value: "App mobile e site desktop responsivo" },
+                { label: "Ferramentas", value: "Figma, FigJam e Figma Make (IA)" },
+              ].map((item) => (
+                <div key={item.label} className="border-t-2 border-primary/30 pt-3">
+                  <p className="font-body text-[11px] tracking-[0.2em] uppercase text-primary font-semibold">{item.label}</p>
+                  <p className="font-body text-sm text-foreground/85 mt-1 leading-relaxed">{item.value}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </header>
+
+        <div className="px-6 md:px-12 lg:px-20">
+          <div className="max-w-[1100px] mx-auto">
+            <ClickableImage
+              src={mvpHomeImg}
+              alt="Página inicial do MVP funcional do Economizando"
+              className="w-full rounded-2xl border border-border shadow-xl mt-6"
+              onOpen={openLightbox}
+            />
+          </div>
+        </div>
 
         {/* ── Content ── */}
         <div className="px-6 md:px-12 lg:px-20 pb-20">
           <div className="max-w-[960px] mx-auto">
 
-            {/* ─ Contexto ─ */}
+            {/* ─ Resumo ─ */}
             <section className="mt-16">
-              <SectionLabel>Contexto</SectionLabel>
-              <Body>
-                <p>
-                  Atualmente, o custo de vida no Brasil tem sido um desafio para o orçamento dos brasileiros. Fazer compras no mercado, além de ser uma tarefa rotineira, é também um exercício de estratégia financeira.
-                </p>
-                <p>
-                  Este projeto foi desenvolvido para simular uma plataforma digital de comparação de preços voltada para consumidores que buscam economia e praticidade no dia a dia.
-                </p>
-                <p>
-                  O desafio envolveu desde a identificação do problema até a entrega de protótipos validados, passando por etapas de pesquisa, teste de usabilidade, estratégia e design.
-                </p>
-              </Body>
+              <SectionLabel>Resumo</SectionLabel>
+              <SectionTitle>O case em 30 segundos</SectionTitle>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <Card>
+                  <CardTitle>Desafio</CardTitle>
+                  <CardText>
+                    Comparar preços de supermercado exige abrir várias abas e fazer contas de cabeça. Os apps existentes tinham interfaces confusas, cobertura regional falha e listas engessadas.
+                  </CardText>
+                </Card>
+                <Card>
+                  <CardTitle>Solução</CardTitle>
+                  <CardText>
+                    Uma busca que mostra o mercado mais barato perto do usuário, com o preço por kg ou litro calculado automaticamente, comparação lado a lado e listas que se compartilham pelo WhatsApp.
+                  </CardText>
+                </Card>
+                <Card>
+                  <CardTitle>Resultado</CardTitle>
+                  <CardText>
+                    Protótipos mobile e desktop refinados a partir de testes com usuários e um MVP funcional com 11 telas, construído com IA a partir dos requisitos da pesquisa.
+                  </CardText>
+                </Card>
+              </div>
+
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+                {[
+                  { n: "2", t: "personas definidas a partir da pesquisa" },
+                  { n: "10", t: "heurísticas avaliadas em um concorrente" },
+                  { n: "3 × 4", t: "usuários testados × tarefas no teste" },
+                  { n: "11", t: "telas funcionais no MVP" },
+                ].map((s) => (
+                  <div key={s.t} className="rounded-xl bg-accent/60 border border-border p-5">
+                    <p className="font-heading text-3xl font-bold text-primary leading-none">{s.n}</p>
+                    <p className="font-body text-sm text-foreground/80 mt-2 leading-snug">{s.t}</p>
+                  </div>
+                ))}
+              </div>
+
+              <SubTitle>Habilidades demonstradas</SubTitle>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <Card>
+                  <CardTitle>UX Research</CardTitle>
+                  <Chips items={["Desk research", "Matriz CSD", "Benchmarking", "Questionário", "Personas", "Mapa de empatia", "Jornada", "Análise heurística", "Teste de usabilidade"]} />
+                </Card>
+                <Card>
+                  <CardTitle>Product Design</CardTitle>
+                  <Chips items={["Needs statement", "Priorização impacto × esforço", "Definição de MVP", "Requisitos", "Critérios de aceite", "Prototipação com IA"]} />
+                </Card>
+                <Card>
+                  <CardTitle>UI Design</CardTitle>
+                  <Chips items={["UX writing", "Design visual", "Tipografia", "Cor", "Iconografia", "Protótipo hi-fi", "Responsivo", "Acessibilidade"]} />
+                </Card>
+              </div>
             </section>
 
             <Divider />
 
             {/* ─ Problema ─ */}
             <section>
+              <SectionLabel>Contexto</SectionLabel>
               <SectionTitle>O problema</SectionTitle>
               <Body>
                 <p>
-                  Consumidores frequentemente enfrentam dificuldade para comparar preços de produtos entre estabelecimentos, o que resulta em mas decisões de compra.
-                </p>
-                <p>
-                  Quem deseja encontrar o melhor custo-benefício enfrenta uma jornada fragmentada: acessam diversos sites, abrem múltiplas abas e precisam cruzar informações por conta própria.
+                  Com a alta dos preços, comparar valores antes de ir ao mercado virou hábito para muita gente. Mas a tarefa é cansativa: quem busca o melhor custo-benefício abre vários sites, cruza informações por conta própria e ainda precisa calcular qual embalagem compensa mais.
                 </p>
               </Body>
 
@@ -305,72 +443,67 @@ const Project1 = () => {
                   { emoji: "😟", text: "Insegurança na decisão de compra" },
                   { emoji: "⏱️", text: "Perda de tempo em tarefas repetitivas" },
                 ].map((item) => (
-                  <div
-                    key={item.text}
-                    className="rounded-xl bg-accent/50 border border-border p-5 text-center"
-                  >
+                  <div key={item.text} className="rounded-xl bg-accent/50 border border-border p-5 text-center">
                     <span className="text-2xl block mb-2">{item.emoji}</span>
                     <p className="font-body text-sm text-foreground/80 font-medium">{item.text}</p>
                   </div>
                 ))}
               </div>
 
+              <Quote>
+                Como poderíamos ajudar quem faz as compras da casa a descobrir onde cada produto está mais barato, sem abrir dezenas de abas nem fazer contas?
+              </Quote>
               <Body>
                 <p>
-                  Em uma pesquisa rápida pela internet, encontrei soluções digitais que listam preços, porém apresentavam interfaces confusas, limitadas e com dados desatualizados. Muitas soluções focam apenas no preço, sem considerar fatores como frete, avaliações e confiabilidade da loja.
+                  A proposta não era só mostrar o menor preço, e sim ajudar a planejar as compras: comparar embalagens de tamanhos diferentes, considerar a distância até o mercado e organizar listas para dividir com a família.
                 </p>
               </Body>
             </section>
-
-            {/* ─ Objetivo ─ */}
-            <Quote>
-              Reduzir o esforço manual de pesquisa e transformar esse processo em uma experiência simples, centralizada e confiável.
-            </Quote>
-
-            <Body>
-              <p>
-                A proposta não era apenas mostrar o valor mais baixo, mas auxiliar o usuário a planejar suas compras de forma inteligente, otimizando o orçamento mensal e o tempo de deslocamento.
-              </p>
-            </Body>
 
             <Divider />
 
             {/* ─ Processo ─ */}
             <section>
               <SectionLabel>Processo</SectionLabel>
+              <SectionTitle>Como trabalhei</SectionTitle>
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-3 my-8">
+                {[
+                  { step: "Descobrir", items: "Desk research, proto-persona, CSD, benchmarking, questionário" },
+                  { step: "Definir", items: "Personas, mapas de empatia, jornadas, needs statement" },
+                  { step: "Idear", items: "Brainstorming e grid de priorização" },
+                  { step: "Prototipar e testar", items: "Baixa fidelidade, análise heurística, teste de usabilidade" },
+                  { step: "Entregar", items: "UX writing, visual design, hi-fi e MVP funcional" },
+                ].map((s, i) => (
+                  <div key={s.step} className="rounded-xl border border-border bg-card p-4">
+                    <span className="font-heading text-lg font-bold text-primary/40">{String(i + 1).padStart(2, "0")}</span>
+                    <h4 className="font-heading text-sm font-semibold text-foreground mt-1">{s.step}</h4>
+                    <p className="font-body text-xs text-muted-foreground mt-1 leading-relaxed">{s.items}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* ─ Pesquisa ─ */}
+            <section>
+              <SectionLabel>Descobrir</SectionLabel>
               <SectionTitle>Entendendo o cenário</SectionTitle>
 
-              <SubTitle>Pesquisa e Insights</SubTitle>
-              <Body>
-                <p>
-                  A fase de pesquisa envolveu análise de mercado, pesquisa com usuários e levantamento de dados secundários para compreender o cenário de comparação de preços no Brasil.
-                </p>
-              </Body>
+              <SubTitle>Desk research</SubTitle>
               <BulletList
                 items={[
-                  "As pessoas costumam abrir várias abas simultaneamente e comparar preços manualmente",
-                  "Muitas pessoas compartilham promoções entre amigos e familiares",
-                  "A pesquisa de preços online antes de comprar em lojas físicas é um hábito comum, com maior incidência entre consumidores de 18 a 34 anos",
+                  "Pesquisar preços online antes de comprar na loja física é um hábito comum do brasileiro, principalmente entre 18 e 34 anos",
+                  "Muitas pessoas compartilham promoções com amigos e familiares",
+                  "Quem compra online também vai ao mercado conferir ou trocar produtos quando a loja é perto de casa",
                 ]}
               />
 
-              <SubTitle>Quem é o usuário?</SubTitle>
+              <SubTitle>Proto-persona e Matriz CSD</SubTitle>
               <Body>
                 <p>
-                  Com base nos dados iniciais, construí uma proto-persona para representar o perfil de uso, comportamento e motivações:
+                  Antes de falar com usuários, registrei o que eu já sabia, o que estava supondo e o que precisava descobrir. Isso definiu as perguntas da pesquisa.
                 </p>
               </Body>
-              <Insight label="Proto-persona">
-                Jovem de 33 anos, que mora sozinha, pesquisa preços em supermercados próximos, fica ligada em promoções e compra em atacado de sites onde o frete é grátis.
-              </Insight>
               <NarrowImage src={personaImg} alt="Proto-persona: Joana Medeiros" maxWidth="720px" onOpen={openLightbox} />
-
-              <SubTitle>Organizando o conhecimento — Matriz CSD</SubTitle>
-              <Body>
-                <p>
-                  Usei a Matriz CSD (Certezas, Suposições e Dúvidas) para organizar a pesquisa, identificar lacunas de conhecimento e validar hipóteses.
-                </p>
-              </Body>
               <ImageGrid
                 images={[
                   { src: csdCertezasImg, alt: "Matriz CSD — Certezas" },
@@ -380,54 +513,70 @@ const Project1 = () => {
                 onOpen={openLightbox}
               />
 
-              <SubTitle>Olhando para o mercado</SubTitle>
+              <SubTitle>Benchmarking</SubTitle>
               <Body>
                 <p>
-                  Foram analisados concorrentes diretos e indiretos, identificando padrões de interface, funcionalidades comuns e oportunidades de diferenciação.
+                  Comparei as funcionalidades dos concorrentes em uma tabela (tem / não tem) e anotei o que cada um fazia bem e onde falhava.
                 </p>
               </Body>
               <BulletList
                 items={[
-                  "Falta de atualização em tempo real",
-                  "Interfaces pouco intuitivas que não ajudavam na criação de listas dinâmicas",
+                  "Preços desatualizados e cobertura regional falha",
+                  "Listas pouco flexíveis e difíceis de editar",
                   "Excesso de informação sem hierarquia clara",
                 ]}
               />
-              <Insight label="Diferencial identificado">
-                O diferencial do Economizando seria a geolocalização aliada à construção de listas personalizadas e compartilháveis.
+              <Insight label="Oportunidade">
+                Unir geolocalização, cálculo automático do preço por unidade e listas personalizadas e compartilháveis em uma interface simples.
               </Insight>
               <NarrowImage src={benchmarkingImg} alt="Tabela comparativa de funcionalidades — Benchmarking" onOpen={openLightbox} />
 
-              <Divider />
+              <SubTitle>Pesquisa com usuários</SubTitle>
+              <Body>
+                <p>Para validar as suposições, apliquei um questionário online guiado por duas perguntas centrais:</p>
+              </Body>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+                <Card>
+                  <CardText>"Você compara preços de produtos de supermercado antes de realizar uma compra?"</CardText>
+                </Card>
+                <Card>
+                  <CardText>"Qual a fonte de pesquisa que você utiliza para fazer essa comparação?"</CardText>
+                </Card>
+              </div>
+              <Body>
+                <p>O que os usuários disseram que esperavam de uma plataforma assim:</p>
+              </Body>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 my-6">
+                {[
+                  "Fonte de preços confiável e com ofertas atualizadas",
+                  "Calculadora automática de preço por unidade",
+                  "Filtros por preço, categoria e localização",
+                  "Avaliações de outros consumidores",
+                  "Histórico de preço para saber se a promoção é real",
+                  "Produtos disponíveis por proximidade",
+                  "Variedade de produtos",
+                  "Interface clara, com o essencial fácil de entender",
+                ].map((t) => (
+                  <div key={t} className="flex items-start gap-3 rounded-lg border border-border bg-card px-4 py-3">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary mt-[8px] flex-shrink-0" />
+                    <p className="font-body text-sm text-foreground/85">{t}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
 
-              <SubTitle>Ouvindo os usuários</SubTitle>
+            <Divider />
+
+            {/* ─ Definir ─ */}
+            <section>
+              <SectionLabel>Definir</SectionLabel>
+              <SectionTitle>Quem é o usuário e do que ele precisa</SectionTitle>
+
+              <SubTitle>Personas, empatia e jornada</SubTitle>
               <Body>
                 <p>
-                  Entrevistas qualitativas foram realizadas para entender comportamentos, necessidades e pontos de dor reais dos consumidores.
+                  Agrupei os achados por similaridade e cheguei a duas personas. A principal é uma mulher entre 28 e 34 anos, comprometida, que cuida das compras da casa e busca praticidade e economia. Os mapas de empatia e as jornadas mostraram onde ela sente insegurança e onde desiste.
                 </p>
-                <p>Montei um questionário online para entender:</p>
-              </Body>
-              <BulletList
-                items={[
-                  "Qual era o perfil exato da Persona",
-                  "Quais eram as funcionalidades essenciais para uma plataforma de comparação de preços",
-                  "Quais eram as dores dos usuários ao pesquisar preços e tomar decisões de compra",
-                ]}
-              />
-
-              <SubTitle>Mapas de Empatia e Jornada</SubTitle>
-              <Body>
-                <p>Os mapas de empatia e jornada permitiram visualizar:</p>
-              </Body>
-              <BulletList
-                items={[
-                  "O que o usuário pensa e sente durante a busca",
-                  "Seus pontos de dor ao longo da jornada",
-                  "Momentos de indecisão e abandono",
-                ]}
-              />
-              <Body>
-                <p>Isso trouxe mais clareza sobre onde a experiência precisava melhorar.</p>
               </Body>
               <ImageGrid
                 images={[
@@ -437,70 +586,183 @@ const Project1 = () => {
                 onOpen={openLightbox}
               />
 
-              <Divider />
-
-              <SubTitle>O que construir primeiro?</SubTitle>
+              <SubTitle>Needs statement e priorização</SubTitle>
+              <Insight label="Estrutura usada">
+                "[Persona] precisa de um jeito de [necessidade] para [motivo]". Para cada persona, levantei cinco soluções possíveis e posicionei todas em um grid de impacto × esforço.
+              </Insight>
               <Body>
-                <p>
-                  As funcionalidades foram priorizadas com uma matriz de impacto versus esforço, garantindo que o MVP contemplasse as features de maior valor com menor complexidade técnica.
-                </p>
+                <p className="mt-6">O que entrou no MVP:</p>
               </Body>
               <BulletList
                 items={[
-                  "Simplificação da comparação entre produtos",
-                  "Lista compartilhada",
-                  "Avaliação dos produtos",
-                  "Cálculo automático de custo-benefício dos produtos",
+                  "Comparação de preços entre produtos",
+                  "Cálculo automático do custo-benefício (preço por unidade)",
+                  "Listas de compras múltiplas e compartilháveis",
+                  "Avaliação de produtos",
                 ]}
               />
               <NarrowImage src={priorizacaoImg} alt="Grid de priorização: Impacto x Esforço" maxWidth="760px" onOpen={openLightbox} />
             </section>
 
-            {/* ─ Design ─ */}
+            <Divider />
+
+            {/* ─ Heurística ─ */}
             <section>
-              <SectionLabel>Design</SectionLabel>
-              <SectionTitle>Dando forma à solução</SectionTitle>
-
-              <SubTitle>Protótipos de baixa fidelidade</SubTitle>
+              <SectionLabel>Prototipar e testar</SectionLabel>
+              <SectionTitle>Aprendendo com os erros do concorrente</SectionTitle>
               <Body>
                 <p>
-                  Wireframes foram criados para validar estruturas de layout, testar ideias com rapidez e ajustar fluxos de interação antes dos detalhes visuais.
+                  Fiz uma análise heurística (10 heurísticas de Nielsen) de um app concorrente. Cada problema encontrado virou uma decisão de design:
                 </p>
               </Body>
-
-              <SubTitle>Testes de usabilidade</SubTitle>
-              <Body>
-                <p>
-                  Testes foram conduzidos com usuários reais para validar hipóteses de design, identificar pontos de fricção e analisar oportunidades de melhoria.
-                </p>
-              </Body>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-8">
+              <div className="my-8 rounded-xl border border-border overflow-hidden">
+                <div className="hidden md:grid grid-cols-2 bg-accent/60 px-5 py-3 font-body text-[11px] tracking-[0.2em] uppercase text-primary font-semibold">
+                  <span>No concorrente</span>
+                  <span>No Economizando</span>
+                </div>
                 {[
-                  { title: "Métricas", items: ["Conclusão da tarefa", "Erros relatados", "Descrição do erro"] },
-                  { title: "Análise complementar", items: ["Feedback espontâneo", "Observação comportamental", "Ajustes aplicáveis"] },
-                  { title: "Conclusões", items: ["Comparações visuais são valorizadas", "Informações organizadas evitam sobrecarga", "Clareza influencia na decisão"] },
-                ].map((col) => (
-                  <div key={col.title} className="rounded-xl bg-accent/40 border border-border p-5">
-                    <h4 className="font-heading text-sm font-semibold text-foreground mb-3">{col.title}</h4>
-                    <ul className="space-y-2">
-                      {col.items.map((item) => (
-                        <li key={item} className="flex items-start gap-2 font-body text-sm text-foreground/80">
-                          <span className="w-1 h-1 rounded-full bg-primary mt-[7px] flex-shrink-0" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
+                  ["Não dá para renomear listas nem criar mais do que três", "Listas ilimitadas, com renomear e duplicar"],
+                  ["O link compartilhado pelo WhatsApp não abre a lista", "Link que abre a lista de verdade, com opção de salvar uma cópia"],
+                  ["Excluir um item não tem \"desfazer\"", "Confirmação antes de excluir e botão \"Desfazer\""],
+                  ["Sem mercados cadastrados na região de Santos-SP", "Base com mercados da Baixada Santista e busca por raio"],
+                  ["Botões de duas cores e tamanhos de texto inconsistentes", "Um único estilo para ações principais e hierarquia tipográfica clara"],
+                  ["Telas pesadas, letras escuras e pouco espaçamento", "Cards limpos, mais respiro e o preço em destaque"],
+                ].map(([a, b]) => (
+                  <div key={a} className="grid grid-cols-1 md:grid-cols-2 gap-1 md:gap-4 px-5 py-4 border-t border-border bg-card">
+                    <span className="font-body text-sm text-muted-foreground">{a}</span>
+                    <span className="font-body text-sm font-medium text-foreground flex items-start gap-2">
+                      <ArrowRight size={16} className="text-primary mt-0.5 flex-shrink-0 hidden md:block" />
+                      {b}
+                    </span>
                   </div>
                 ))}
               </div>
 
-              <Divider />
+              <SubTitle>Teste de usabilidade</SubTitle>
+              <Body>
+                <p>
+                  Testei o protótipo de baixa fidelidade com três usuários. Cada um realizou quatro tarefas, e registrei conclusão, tempo, erros e uma nota de dificuldade de 1 (fácil) a 5 (muito difícil).
+                </p>
+              </Body>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 my-6">
+                {[
+                  "Adicionar um produto à lista de compras",
+                  "Adicionar um produto à lista de comparação",
+                  "Avaliar um produto",
+                  "Criar mais uma lista de compras",
+                ].map((t, i) => (
+                  <div key={t} className="flex items-center gap-3 rounded-lg border border-border bg-card px-4 py-3">
+                    <span className="font-heading text-sm font-bold text-primary">T{i + 1}</span>
+                    <p className="font-body text-sm text-foreground/85">{t}</p>
+                  </div>
+                ))}
+              </div>
+              <Body>
+                <p>Os testes mostraram que os rótulos geravam dúvida. Ajustei o UX writing e a interface:</p>
+              </Body>
+              <BeforeAfter
+                rows={[
+                  { before: "Adicionar à lista", after: "Adicionar à lista de compras", why: "Deixa claro para qual lista o produto vai" },
+                  { before: "Avaliação", after: "Ver avaliações", why: "O link leva para a leitura das avaliações, não para avaliar" },
+                  { before: "Avaliar só na tela de avaliações", after: "\"Escrever avaliação\" também no detalhe do produto", why: "Encurta o caminho da tarefa 3" },
+                  { before: "Adicionar produto", after: "Adicionar mais produtos", why: "Indica que a ação pode ser repetida" },
+                  { before: "Nenhuma confirmação", after: "Mensagem de confirmação ao adicionar", why: "Visibilidade do status do sistema" },
+                ]}
+              />
+              <Insight label="Aprendizado">
+                Os testes revelaram problemas de clareza que a análise heurística sozinha não teria mostrado. Termos consistentes para a mesma ação reduziram a dúvida em todas as tarefas.
+              </Insight>
+            </section>
 
-              {/* Protótipos */}
+            <Divider />
+
+            {/* ─ Identidade ─ */}
+            <section>
+              <SectionLabel>Entregar</SectionLabel>
+              <SectionTitle>A voz e a cara do produto</SectionTitle>
+
+              <SubTitle>UX writing e princípios de UX</SubTitle>
+              <Body>
+                <p>
+                  Tom de voz <strong>casual e entusiasmado</strong>, pensado para a persona: direto, próximo e com verbos de ação claros. Nas telas, apliquei leis e princípios de UX:
+                </p>
+              </Body>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 my-6">
+                {[
+                  { t: "Lei de Fitts", d: "Botões de ação grandes e fáceis de alcançar" },
+                  { t: "Lei de Hick", d: "Poucas opções por tela para decidir mais rápido" },
+                  { t: "Lei de Jakob", d: "Padrões de e-commerce que o usuário já conhece" },
+                  { t: "Efeito Von Restorff", d: "Selo amarelo destaca o melhor custo-benefício" },
+                  { t: "Gestalt", d: "Proximidade e região comum agrupam preço, preço/kg e mercado" },
+                  { t: "Pico e final", d: "Confirmações positivas no fim de cada tarefa" },
+                ].map((p) => (
+                  <Card key={p.t}>
+                    <CardTitle>{p.t}</CardTitle>
+                    <CardText>{p.d}</CardText>
+                  </Card>
+                ))}
+              </div>
+
+              <SubTitle>Identidade visual</SubTitle>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6 mb-8">
+                <div className="flex items-center gap-4 p-5 rounded-xl border border-border bg-card">
+                  <div className="w-16 h-16 rounded-lg bg-[#162C9A] flex-shrink-0" />
+                  <div>
+                    <h5 className="font-heading text-base font-semibold text-foreground">Azul #162C9A</h5>
+                    <p className="font-body text-sm text-muted-foreground mt-1">Confiança, lealdade e competência: credibilidade para quem compara preços</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4 p-5 rounded-xl border border-border bg-card">
+                  <div className="w-16 h-16 rounded-lg bg-[#FFD027] flex-shrink-0" />
+                  <div>
+                    <h5 className="font-heading text-base font-semibold text-foreground">Amarelo #FFD027</h5>
+                    <p className="font-body text-sm text-muted-foreground mt-1">Criatividade, alegria e calor: energia nas ações principais</p>
+                  </div>
+                </div>
+              </div>
+              <p className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground font-semibold mb-4 mt-8">
+                Cores complementares
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                <div className="flex items-center gap-4 p-5 rounded-xl border border-border bg-card">
+                  <div className="w-16 h-16 rounded-lg bg-[#1FCEF0] flex-shrink-0" />
+                  <div>
+                    <h5 className="font-heading text-base font-semibold text-foreground">Ciano #1FCEF0</h5>
+                    <p className="font-body text-sm text-muted-foreground mt-1">Frescor, modernidade e clareza</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4 p-5 rounded-xl border border-border bg-card">
+                  <div className="w-16 h-16 rounded-lg bg-[#EDEAEA] flex-shrink-0" />
+                  <div>
+                    <h5 className="font-heading text-base font-semibold text-foreground">Cinza claro #EDEAEA</h5>
+                    <p className="font-body text-sm text-muted-foreground mt-1">Neutralidade, leveza e equilíbrio</p>
+                  </div>
+                </div>
+              </div>
+
+              <h4 className="font-heading text-lg font-semibold text-foreground mt-10 mb-4">Tipografia</h4>
+              <Body>
+                <p>
+                  Inter: alta legibilidade no celular e no computador, e familiar para quem já usa apps de supermercado e e-commerce, o que reduz a curva de aprendizado.
+                </p>
+              </Body>
+              <FontSpecimen />
+
+              <h4 className="font-heading text-lg font-semibold text-foreground mt-10 mb-4">Ícones</h4>
+              <Body>
+                <p>Ícones já reconhecidos em interfaces digitais (casa, lupa, lista, perfil, coração, compartilhar), para navegar sem precisar ler.</p>
+              </Body>
+              <ImageGrid
+                images={[
+                  { src: iconesNavImg, alt: "Ícones de navegação" },
+                  { src: iconesUiImg, alt: "Ícones de interface" },
+                ]}
+                onOpen={openLightbox}
+              />
+
               <SubTitle>Protótipos navegáveis</SubTitle>
               <Body>
-                <p>Explore os protótipos interativos diretamente abaixo:</p>
+                <p>Protótipos de alta fidelidade para app e site. Navegue direto aqui:</p>
               </Body>
               <FigmaEmbed
                 title="Protótipo App"
@@ -514,245 +776,109 @@ const Project1 = () => {
 
             <Divider />
 
-            {/* ─ Identidade ─ */}
-            <section>
-              <SectionLabel>Identidade</SectionLabel>
-              <SectionTitle>A voz e a cara do produto</SectionTitle>
-
-              <SubTitle>UX Writing</SubTitle>
-              <Body>
-                <p>
-                  O UX Writing foi pensado para ser claro, direto e funcional, evitando termos técnicos ou ambíguos. A persona foi essencial para definir o tom de voz ideal.
-                </p>
-              </Body>
-              <Insight label="Tom de voz">
-                "Casual" e "Entusiasmado" para uma comunicação acessível, empática, direta e motivadora.
-              </Insight>
-
-              <SubTitle>Identidade Visual</SubTitle>
-              <Body>
-                <p>
-                  Paleta de cores, tipografia e iconografia seguiram princípios de simplicidade e confiabilidade, transmitindo credibilidade ao usuário.
-                </p>
-              </Body>
-
-              {/* Ícones */}
-              <h4 className="font-heading text-lg font-semibold text-foreground mt-10 mb-4">Ícones</h4>
-              <Body>
-                <p>
-                  Optei por ícones já reconhecidos em interfaces digitais para garantir navegação intuitiva e baixa carga cognitiva.
-                </p>
-              </Body>
-              <ImageGrid
-                images={[
-                  { src: iconesNavImg, alt: "Ícones de navegação" },
-                  { src: iconesUiImg, alt: "Ícones de interface" },
-                ]}
-                onOpen={openLightbox}
-              />
-
-              {/* Paleta de cores */}
-              <h4 className="font-heading text-lg font-semibold text-foreground mt-10 mb-4">Paleta de cores</h4>
-              <Body>
-                <p>
-                  De acordo com o manual de psicologia das cores, as que foram escolhidas foram:
-                </p>
-              </Body>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6 mb-8">
-                <div className="flex items-center gap-4 p-5 rounded-xl border border-border bg-card">
-                  <div className="w-16 h-16 rounded-lg bg-[#162C9A] flex-shrink-0" />
-                  <div>
-                    <h5 className="font-heading text-base font-semibold text-foreground">Azul #162C9A</h5>
-                    <p className="font-body text-sm text-muted-foreground mt-1">Confiança, Lealdade, Competência</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4 p-5 rounded-xl border border-border bg-card">
-                  <div className="w-16 h-16 rounded-lg bg-[#FFD027] flex-shrink-0" />
-                  <div>
-                    <h5 className="font-heading text-base font-semibold text-foreground">Amarelo #FFD027</h5>
-                    <p className="font-body text-sm text-muted-foreground mt-1">Criatividade, Alegria, Calor</p>
-                  </div>
-                </div>
-              </div>
-
-              <p className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground font-semibold mb-4 mt-8">
-                CORES COMPLEMENTARES
-              </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-                <div className="flex items-center gap-4 p-5 rounded-xl border border-border bg-card">
-                  <div className="w-16 h-16 rounded-lg bg-[#1FCEF0] flex-shrink-0" />
-                  <div>
-                    <h5 className="font-heading text-base font-semibold text-foreground">Ciano #1FCEF0</h5>
-                    <p className="font-body text-sm text-muted-foreground mt-1">Frescor, Modernidade, Clareza</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4 p-5 rounded-xl border border-border bg-card">
-                  <div className="w-16 h-16 rounded-lg bg-[#EDEAEA] flex-shrink-0" />
-                  <div>
-                    <h5 className="font-heading text-base font-semibold text-foreground">Cinza claro #EDEAEA</h5>
-                    <p className="font-body text-sm text-muted-foreground mt-1">Neutralidade, Leveza, Equilíbrio</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Tipografia */}
-              <h4 className="font-heading text-lg font-semibold text-foreground mt-10 mb-4">Tipografia</h4>
-              <Body>
-                <p>
-                  A fonte Inter foi escolhida por ser moderna, funcional, com alta legibilidade e familiar ao usuário para reduzir a curva de aprendizado.
-                </p>
-              </Body>
-              <FontSpecimen />
-            </section>
-
-            <Divider />
-
             {/* ─ MVP funcional ─ */}
             <section>
-              <SectionLabel>Desenvolvimento</SectionLabel>
-              <SectionTitle>Do protótipo ao MVP funcional</SectionTitle>
+              <SectionLabel>Do protótipo ao produto</SectionLabel>
+              <SectionTitle>MVP funcional</SectionTitle>
               <Body>
                 <p>
-                  Para validar se a solução realmente resolvia o problema, transformei o protótipo de alta fidelidade em um produto funcional. Usei prompt engineering no Figma Make (IA) para gerar o código a partir das telas e de um documento de requisitos baseado na pesquisa.
+                  Para testar se a solução funcionava de verdade, transformei o protótipo em um produto navegável. Escrevi um documento de requisitos a partir da pesquisa e usei prompt engineering no Figma Make (IA) para gerar o código. Depois revisei o resultado contra critérios de aceite baseados nas tarefas do teste de usabilidade.
                 </p>
               </Body>
-              <Insight label="Em uma frase">
-                Web app que compara preços de supermercado entre mercados próximos, calcula o preço por kg, litro ou unidade para comparar embalagens de tamanhos diferentes e ajuda a montar e compartilhar listas de compras.
-              </Insight>
 
-              <SubTitle>Requisitos funcionais</SubTitle>
-              <BulletList
-                items={[
-                  "Busca sem acento, com filtros por categoria, mercado, preço, distância e promoções",
-                  "Ordenação por preço por unidade, preço total, distância ou avaliação",
-                  "Cálculo automático do preço por unidade (R$/kg, R$/L, R$/un) com selo de \"Melhor custo-benefício\"",
-                  "Localização do usuário (GPS ou cidade padrão) com raio de busca",
-                  "Comparação de até 6 produtos lado a lado",
-                  "Listas de compras com CRUD completo, totais, economia estimada e o mercado onde a lista sai mais barata",
-                  "Compartilhamento por WhatsApp, e-mail ou link que abre a lista",
-                  "Avaliações com estrelas e comentário, favoritos e histórico de preço de 90 dias",
-                ]}
+              <Screenshot
+                src={mvpBuscaImg}
+                alt="Resultado de busca do MVP com filtros e selo de melhor custo-benefício"
+                caption="Busca: filtros por categoria, mercado, preço e distância. Os resultados vêm ordenados pelo preço por kg, e o melhor negócio ganha o selo amarelo."
+                onOpen={openLightbox}
               />
-
-              <SubTitle>Requisitos não funcionais</SubTitle>
-              <BulletList
-                items={[
-                  "Responsivo, com barra de navegação inferior no mobile",
-                  "Acessível: aria-labels, foco visível e estrelas operáveis por teclado",
-                  "Dados persistem entre visitas",
-                  "Código tipado e regra de cálculo coberta por testes",
-                  "Arquitetura preparada para trocar os dados simulados por uma API real",
-                ]}
-              />
-
-              <SubTitle>Tecnologias</SubTitle>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 my-6">
-                {[
-                  { name: "Figma Make (IA)", role: "Geração do código a partir de prompt e telas" },
-                  { name: "TypeScript", role: "Tipagem dos modelos de dados" },
-                  { name: "React 19", role: "Componentes e estado da interface" },
-                  { name: "React Router 7", role: "11 rotas com URL própria" },
-                  { name: "Tailwind CSS 4", role: "Identidade visual do Figma" },
-                  { name: "Lucide React", role: "Ícones" },
-                  { name: "Vite", role: "Build e servidor de desenvolvimento" },
-                  { name: "Vitest", role: "Testes unitários" },
-                ].map((tech) => (
-                  <div key={tech.name} className="rounded-xl border border-border bg-card p-4">
-                    <h4 className="font-heading text-sm font-semibold text-foreground">{tech.name}</h4>
-                    <p className="font-body text-sm text-muted-foreground mt-1">{tech.role}</p>
-                  </div>
-                ))}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <Screenshot
+                  src={mvpProdutoImg}
+                  alt="Detalhe do produto com preço por kg e onde comprar"
+                  caption="Detalhe: preço total e preço por kg lado a lado, tabela de onde comprar e histórico de 90 dias."
+                  onOpen={openLightbox}
+                />
+                <Screenshot
+                  src={mvpCompararImg}
+                  alt="Lista de comparação de preços do MVP"
+                  caption="Comparação: até 6 produtos ranqueados, com a diferença para o mais vantajoso."
+                  onOpen={openLightbox}
+                />
+                <Screenshot
+                  src={mvpListaImg}
+                  alt="Lista de compras do MVP com compartilhamento"
+                  caption="Lista: checkbox, quantidade, totais, mercado mais barato para a lista inteira e envio pelo WhatsApp."
+                  onOpen={openLightbox}
+                />
+                <Screenshot
+                  src={mvpAvaliacoesImg}
+                  alt="Tela de avaliações do produto do MVP"
+                  caption="Avaliações: estrelas operáveis por teclado, validação do comentário e média recalculada na hora."
+                  onOpen={openLightbox}
+                />
               </div>
 
-              <SubTitle>Arquitetura</SubTitle>
+              <SubTitle>Tecnologias e arquitetura</SubTitle>
+              <Chips items={["Figma Make (IA)", "React 19", "TypeScript", "React Router", "Tailwind CSS", "Vite", "Vitest", "Lucide"]} />
               <Body>
-                <p>
-                  É uma SPA (single-page application) que roda inteiramente no navegador. O papel do backend é cumprido por uma camada de serviços, separada da interface pelos padrões Repository e Service:
+                <p className="mt-6">
+                  É uma SPA que roda no navegador. A interface, as regras de negócio e os dados ficam em camadas separadas (padrões Service e Repository), então os dados simulados podem ser trocados por uma API de preços real sem refazer as telas.
                 </p>
               </Body>
-              <BulletList
-                items={[
-                  "Modelo de dados tipado: Produto, Mercado, Oferta, Lista",
-                  "Base simulada: 9 mercados reais da Baixada Santista e 41 produtos em 12 categorias, com histórico de preço",
-                  "Serviço de preços: busca, preço por unidade, distância e melhor oferta",
-                  "Repositório: persistência no localStorage, isolada para ser trocada por um banco (ex.: Supabase)",
-                  "Estado global com Context API: listas, comparação, favoritos e localização",
-                ]}
-              />
-
-              <SubTitle>Lógica de negócio</SubTitle>
-              <BulletList
-                items={[
-                  "Preço por unidade: converte g→kg e ml→L antes de dividir (R$ 10 em 500 g = R$ 20/kg)",
-                  "Distância até o mercado calculada pela fórmula de Haversine",
-                  "Melhor mercado da lista: soma a lista em cada mercado e escolhe o menor total",
-                  "Busca sem acento por normalização Unicode e moeda no padrão brasileiro (Intl)",
-                  "Link compartilhável: a lista vai codificada em Base64 na própria URL, sem precisar de servidor",
-                ]}
-              />
-
-              <SubTitle>APIs</SubTitle>
-              <Body>
-                <p>
-                  O app não usa APIs externas pagas nem com chave. Usa APIs nativas do navegador (Geolocalização, localStorage, Área de transferência e Intl), deep links para WhatsApp (wa.me) e e-mail (mailto) e imagens via CDN do Unsplash.
-                </p>
-              </Body>
-
-              <SubTitle>Heurísticas de Nielsen aplicadas</SubTitle>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 my-6">
                 {[
-                  { h: "Status do sistema", d: "Skeleton no carregamento, toasts de confirmação e contador da comparação" },
-                  { h: "Mundo real", d: "\"O kg sai por R$ 4,98\" e \"1,4 km de você\"" },
-                  { h: "Controle e liberdade", d: "Renomear e duplicar listas, listas ilimitadas e \"Desfazer\" ao excluir" },
-                  { h: "Consistência", d: "Mesmo rótulo para a mesma ação e amarelo em toda ação principal" },
-                  { h: "Prevenção de erros", d: "Confirmação antes de excluir, validação da avaliação e limite na comparação" },
-                  { h: "Reconhecimento", d: "Favoritos e filtros lembrados, selo de melhor custo-benefício" },
-                  { h: "Eficiência", d: "Adicionar à lista a partir de 3 telas e compartilhar em 1 clique" },
-                  { h: "Minimalismo", d: "Cards limpos, com o preço em destaque" },
-                  { h: "Recuperação de erros", d: "Tela sem resultados com opção de limpar filtros, página 404 e localização padrão" },
-                  { h: "Ajuda", d: "Página \"Sobre nós\" e tutorial no perfil" },
-                ].map((item, i) => (
-                  <div key={item.h} className="flex items-start gap-3 rounded-xl border border-border bg-card p-4">
-                    <span className="font-heading text-lg font-bold text-primary/40 leading-none mt-0.5">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <div>
-                      <h4 className="font-heading text-sm font-semibold text-foreground">{item.h}</h4>
-                      <p className="font-body text-sm text-muted-foreground mt-1">{item.d}</p>
-                    </div>
-                  </div>
+                  { t: "Preço por unidade", d: "Converte g→kg e ml→L antes de dividir. R$ 10 em 500 g = R$ 20/kg. Coberto por testes automatizados." },
+                  { t: "Distância", d: "Fórmula de Haversine entre o usuário e cada mercado, com raio configurável." },
+                  { t: "Melhor mercado da lista", d: "Soma a lista em cada mercado e indica onde ela sai mais barata." },
+                  { t: "Compartilhar sem servidor", d: "A lista vai codificada na própria URL e abre em modo leitura." },
+                ].map((p) => (
+                  <Card key={p.t}>
+                    <CardTitle>{p.t}</CardTitle>
+                    <CardText>{p.d}</CardText>
+                  </Card>
                 ))}
               </div>
-              <Insight label="Da análise heurística para o produto">
-                As falhas encontradas no concorrente (listas que não podiam ser renomeadas, limite de três listas, link de compartilhamento que não abria e exclusão sem desfazer) viraram requisitos explícitos do MVP.
-              </Insight>
+              <Body>
+                <p>
+                  APIs usadas: apenas as nativas do navegador (geolocalização, localStorage, área de transferência e Intl), além de links diretos para WhatsApp e e-mail. Os dados de 9 mercados reais da Baixada Santista e 41 produtos são simulados.
+                </p>
+              </Body>
 
-              <SubTitle>Limitações e próximos passos</SubTitle>
-              <BulletList
-                items={[
-                  "Os preços são simulados; o próximo passo é integrar uma fonte real de preços",
-                  "Os dados ficam no navegador; login e sincronização entre dispositivos viriam com um banco como o Supabase",
-                  "A lista compartilhada é uma cópia, não uma edição colaborativa em tempo real",
-                  "Validar o MVP com uma nova rodada de testes de usabilidade",
-                ]}
-              />
+              <div className="flex flex-wrap gap-3 mt-8">
+                <a
+                  href="https://github.com/luizamenezesg/portfolio-luizam-ux/blob/main/docs/economizando-ficha-tecnica.md"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-2.5 font-body text-sm font-medium text-foreground hover:border-primary hover:text-primary transition-colors min-h-[44px]"
+                >
+                  Ficha técnica completa <ExternalLink size={14} />
+                </a>
+                <a
+                  href="https://medium.com/@luizamenezesg/processo-de-ux-design-para-uma-plataforma-de-compara%C3%A7%C3%A3o-de-pre%C3%A7os-3e089b8edfa2"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-2.5 font-body text-sm font-medium text-foreground hover:border-primary hover:text-primary transition-colors min-h-[44px]"
+                >
+                  Estudo de caso completo no Medium <ExternalLink size={14} />
+                </a>
+              </div>
             </section>
 
             <Divider />
 
-            {/* ─ Resultados ─ */}
+            {/* ─ Conclusão ─ */}
             <section className="mb-8">
               <SectionLabel>Conclusão</SectionLabel>
               <SectionTitle>O que ficou de aprendizado</SectionTitle>
 
               <div className="space-y-4">
                 {[
-                  "A pesquisa com usuários foi essencial para redirecionar o foco do produto",
-                  "A priorização de funcionalidades permitiu um MVP com alto potencial de valor",
-                  "Testes de usabilidade revelaram pontos de fricção que não seriam identificados apenas por análise heurística",
-                  "Cada decisão de design foi documentada com justificativas baseadas em dados de pesquisa, heurísticas de usabilidade e restrições técnicas",
-                  "Documentar decisões de design facilita o alinhamento com stakeholders e acelera iterações futuras",
+                  "Não suponha o que o usuário quer: ouvir e testar mudou o foco do produto",
+                  "A priorização por impacto × esforço garantiu um MVP enxuto e com alto valor",
+                  "Testes de usabilidade revelaram problemas de clareza que a análise heurística não mostraria",
+                  "Problemas do concorrente viraram requisitos explícitos, rastreáveis até a pesquisa",
+                  "Levar o protótipo até um MVP funcional me fez pensar em estados, regras e limites que o Figma não exige",
                 ].map((text, i) => (
                   <div
                     key={i}
@@ -765,6 +891,16 @@ const Project1 = () => {
                   </div>
                 ))}
               </div>
+
+              <SubTitle>Próximos passos</SubTitle>
+              <BulletList
+                items={[
+                  "Integrar uma fonte real de preços",
+                  "Login e sincronização de listas entre dispositivos",
+                  "Validar o MVP em uma nova rodada de testes de usabilidade",
+                  "Tela de perfil completa, filtros avançados e soma automática do orçamento",
+                ]}
+              />
             </section>
           </div>
         </div>
