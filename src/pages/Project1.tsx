@@ -22,6 +22,27 @@ import mvpCompararImg from "@/assets/project1-mvp-comparar.jpg";
 import mvpListaImg from "@/assets/project1-mvp-lista.jpg";
 import mvpAvaliacoesImg from "@/assets/project1-mvp-avaliacoes.jpg";
 
+const MVP_URL = "#"; // TODO: link publicado do MVP (Figma Make)
+const PROTO_APP_URL =
+  "https://www.figma.com/proto/scbZWkNkfk6vhWjP9AqQkt/Projeto-EBAC---Curso-UX-Design?page-id=0%3A1&node-id=83-462&starting-point-node-id=24%3A99&t=wCnw2q0d6kUPJanY-1";
+const PROTO_SITE_URL =
+  "https://www.figma.com/proto/TvuQdcNCi6VE9JKHAURNbj/Projeto-EBAC---Curso-Figma---Site?page-id=0%3A1&node-id=108-437&starting-point-node-id=108%3A812&scaling=contain&content-scaling=fixed&t=5FP5ezxRQvgzZQR3-1";
+
+const LinkButton = ({ href, children, primary = false }: { href: string; children: React.ReactNode; primary?: boolean }) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    className={`inline-flex items-center gap-2 rounded-full px-5 py-2.5 font-body text-sm font-medium transition-colors min-h-[44px] ${
+      primary
+        ? "bg-primary text-primary-foreground hover:bg-primary/90"
+        : "border border-border bg-card text-foreground hover:border-primary hover:text-primary"
+    }`}
+  >
+    {children} <ExternalLink size={14} />
+  </a>
+);
+
 /* ── Lightbox ── */
 
 const Lightbox = ({ src, alt, onClose }: { src: string; alt: string; onClose: () => void }) => (
@@ -341,15 +362,21 @@ const Project1 = () => {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10">
               {[
                 { label: "Meu papel", value: "UX Researcher e Product Designer (projeto individual)" },
-                { label: "Contexto", value: "Formação em UX Design (EBAC) + MVP próprio" },
+                { label: "Quando", value: "Pesquisa e protótipos em 2023 · MVP funcional em 2026" },
                 { label: "Plataformas", value: "App mobile e site desktop responsivo" },
-                { label: "Ferramentas", value: "Figma, FigJam e Figma Make (IA)" },
+                { label: "Ferramentas", value: "Figma e FigJam (2023) · Figma Make com IA (2026)" },
               ].map((item) => (
                 <div key={item.label} className="border-t-2 border-primary/30 pt-3">
                   <p className="font-body text-[11px] tracking-[0.2em] uppercase text-primary font-semibold">{item.label}</p>
                   <p className="font-body text-sm text-foreground/85 mt-1 leading-relaxed">{item.value}</p>
                 </div>
               ))}
+            </div>
+
+            <div className="flex flex-wrap gap-3 mt-8">
+              <LinkButton href={MVP_URL} primary>Ver MVP em funcionamento</LinkButton>
+              <LinkButton href={PROTO_SITE_URL}>Protótipo site (Figma)</LinkButton>
+              <LinkButton href={PROTO_APP_URL}>Protótipo app (Figma)</LinkButton>
             </div>
           </div>
         </header>
@@ -362,6 +389,9 @@ const Project1 = () => {
               className="w-full rounded-2xl border border-border shadow-xl mt-6"
               onOpen={openLightbox}
             />
+            <p className="font-body text-sm text-muted-foreground mt-3 text-center">
+              MVP funcional (2026). O visual é uma evolução do protótipo original de 2023.
+            </p>
           </div>
         </div>
 
@@ -389,7 +419,7 @@ const Project1 = () => {
                 <Card>
                   <CardTitle>Resultado</CardTitle>
                   <CardText>
-                    Protótipos mobile e desktop refinados a partir de testes com usuários e um MVP funcional com 11 telas, construído com IA a partir dos requisitos da pesquisa.
+                    Protótipos mobile e desktop (2023) refinados a partir de testes com usuários e, em 2026, um MVP funcional com 11 telas, construído com IA a partir dos requisitos da pesquisa.
                   </CardText>
                 </Card>
               </div>
@@ -406,6 +436,24 @@ const Project1 = () => {
                     <p className="font-body text-sm text-foreground/80 mt-2 leading-snug">{s.t}</p>
                   </div>
                 ))}
+              </div>
+
+              <SubTitle>Linha do tempo</SubTitle>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="rounded-xl border border-border bg-card p-5 border-l-4 border-l-primary">
+                  <p className="font-heading text-2xl font-bold text-primary">2023</p>
+                  <CardTitle>Pesquisa, UX e protótipos</CardTitle>
+                  <CardText>
+                    Projeto da formação em UX Design da EBAC: pesquisa, personas, testes de usabilidade e protótipos de alta fidelidade para app e site, no Figma.
+                  </CardText>
+                </div>
+                <div className="rounded-xl border border-border bg-card p-5 border-l-4 border-l-secondary">
+                  <p className="font-heading text-2xl font-bold text-secondary">2026</p>
+                  <CardTitle>MVP funcional</CardTitle>
+                  <CardText>
+                    Três anos depois, retomei o projeto e o transformei em um produto navegável com IA (Figma Make). A pesquisa e os requisitos são os mesmos; o design foi atualizado e é diferente dos protótipos originais.
+                  </CardText>
+                </div>
               </div>
 
               <SubTitle>Habilidades demonstradas</SubTitle>
@@ -760,17 +808,21 @@ const Project1 = () => {
                 onOpen={openLightbox}
               />
 
-              <SubTitle>Protótipos navegáveis</SubTitle>
+              <SubTitle>Protótipos navegáveis originais (2023)</SubTitle>
               <Body>
-                <p>Protótipos de alta fidelidade para app e site. Navegue direto aqui:</p>
+                <p>Os protótipos de alta fidelidade feitos em 2023, para app e site, no design original. Navegue aqui ou abra no Figma:</p>
               </Body>
+              <div className="flex flex-wrap gap-3 my-6">
+                <LinkButton href={PROTO_APP_URL}>Abrir protótipo do app no Figma</LinkButton>
+                <LinkButton href={PROTO_SITE_URL}>Abrir protótipo do site no Figma</LinkButton>
+              </div>
               <FigmaEmbed
                 title="Protótipo App"
-                protoUrl="https://www.figma.com/proto/scbZWkNkfk6vhWjP9AqQkt/Projeto-EBAC---Curso-UX-Design?page-id=0%3A1&node-id=83-462&starting-point-node-id=24%3A99&t=wCnw2q0d6kUPJanY-1"
+                protoUrl={PROTO_APP_URL}
               />
               <FigmaEmbed
                 title="Protótipo Site"
-                protoUrl="https://www.figma.com/proto/TvuQdcNCi6VE9JKHAURNbj/Projeto-EBAC---Curso-Figma---Site?page-id=0%3A1&node-id=108-437&starting-point-node-id=108%3A812&scaling=contain&content-scaling=fixed&t=5FP5ezxRQvgzZQR3-1"
+                protoUrl={PROTO_SITE_URL}
               />
             </section>
 
@@ -779,12 +831,19 @@ const Project1 = () => {
             {/* ─ MVP funcional ─ */}
             <section>
               <SectionLabel>Do protótipo ao produto</SectionLabel>
-              <SectionTitle>MVP funcional</SectionTitle>
+              <SectionTitle>MVP funcional (2026)</SectionTitle>
               <Body>
                 <p>
-                  Para testar se a solução funcionava de verdade, transformei o protótipo em um produto navegável. Escrevi um documento de requisitos a partir da pesquisa e usei prompt engineering no Figma Make (IA) para gerar o código. Depois revisei o resultado contra critérios de aceite baseados nas tarefas do teste de usabilidade.
+                  Em 2026, retomei o projeto para testar se a solução funcionava de verdade e o transformei em um produto navegável. Escrevi um documento de requisitos a partir da pesquisa e usei prompt engineering no Figma Make (IA) para gerar o código. Depois revisei o resultado contra critérios de aceite baseados nas tarefas do teste de usabilidade.
                 </p>
               </Body>
+
+              <Insight label="Design diferente do original">
+                O MVP não reproduz os protótipos de 2023 tela a tela. A pesquisa, os fluxos, os requisitos e a identidade (azul #162C9A e amarelo #FFD027) foram mantidos, mas o layout e os componentes foram atualizados para uma interface mais atual e responsiva.
+              </Insight>
+              <div className="flex flex-wrap gap-3 mt-6">
+                <LinkButton href={MVP_URL} primary>Ver MVP em funcionamento</LinkButton>
+              </div>
 
               <Screenshot
                 src={mvpBuscaImg}
@@ -846,22 +905,9 @@ const Project1 = () => {
               </Body>
 
               <div className="flex flex-wrap gap-3 mt-8">
-                <a
-                  href="https://github.com/luizamenezesg/portfolio-luizam-ux/blob/main/docs/economizando-ficha-tecnica.md"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-2.5 font-body text-sm font-medium text-foreground hover:border-primary hover:text-primary transition-colors min-h-[44px]"
-                >
-                  Ficha técnica completa <ExternalLink size={14} />
-                </a>
-                <a
-                  href="https://medium.com/@luizamenezesg/processo-de-ux-design-para-uma-plataforma-de-compara%C3%A7%C3%A3o-de-pre%C3%A7os-3e089b8edfa2"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-2.5 font-body text-sm font-medium text-foreground hover:border-primary hover:text-primary transition-colors min-h-[44px]"
-                >
-                  Estudo de caso completo no Medium <ExternalLink size={14} />
-                </a>
+                <LinkButton href={MVP_URL} primary>Ver MVP em funcionamento</LinkButton>
+                <LinkButton href="https://github.com/luizamenezesg/portfolio-luizam-ux/blob/main/docs/economizando-ficha-tecnica.md">Ficha técnica completa</LinkButton>
+                <LinkButton href="https://medium.com/@luizamenezesg/processo-de-ux-design-para-uma-plataforma-de-compara%C3%A7%C3%A3o-de-pre%C3%A7os-3e089b8edfa2">Estudo de caso no Medium</LinkButton>
               </div>
             </section>
 
