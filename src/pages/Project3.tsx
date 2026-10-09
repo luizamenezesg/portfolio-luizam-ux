@@ -309,9 +309,8 @@ const Project3 = () => {
                 </Card>
                 <Card>
                   <CardTitle as="h3">Resultado</CardTitle>
-                  {/* TODO: Luiza preencher (nº de telas do MVP) */}
                   <CardText>
-                    Protótipo navegável testado com 4 fluxos e, em 2026, um MVP funcional com [CONFIRMAR: nº] telas, gerado com IA a partir de um documento de requisitos e regras de negócio.
+                    Protótipo navegável testado com 4 fluxos e, em 2026, um MVP funcional com 19 telas e 9 fluxos, gerado com IA a partir de um documento de requisitos e regras de negócio.
                   </CardText>
                 </Card>
               </div>
@@ -321,8 +320,7 @@ const Project3 = () => {
                   { n: "18", t: "respostas no questionário" },
                   { n: "72%", t: "têm dificuldade em evitar gastos impulsivos" },
                   { n: "4", t: "fluxos no teste de navegação" },
-                  /* TODO: Luiza preencher (o prompt do Figma Make pediu 20, contando acesso, onboarding e 404) */
-                  { n: "[CONFIRMAR]", t: "telas funcionais no MVP" },
+                  { n: "19", t: "telas funcionais no MVP, em 9 fluxos" },
                 ]}
               />
 
@@ -740,6 +738,36 @@ const Project3 = () => {
                 Para testar: entre com a conta de demonstração, registre uma despesa, crie uma meta, abra Minhas Finanças e pergunte algo à Din.
               </p>
 
+              <SubTitle>Telas e fluxos</SubTitle>
+              <Body>
+                <p>
+                  O MVP tem 19 telas: 4 de acesso (Boas-vindas, Login, Cadastro e Onboarding), as 4 da barra inferior, 9 de transações, metas, categorias, alertas e finanças, o chat da Din e a página 404. Elas formam 9 fluxos:
+                </p>
+              </Body>
+              <ol className="grid grid-cols-1 md:grid-cols-2 gap-3 my-6">
+                {[
+                  ["Acesso", "Boas-vindas → Login (ou conta de demonstração) ou Cadastro → Onboarding → Início"],
+                  ["Registrar transação", "Início ou Transações → Nova transação, com atalho para criar categoria"],
+                  ["Consultar", "Transações → Histórico, e a aba Pesquisar"],
+                  ["Metas", "Perfil, Início ou Onboarding → Minhas Metas → Nova meta ou detalhe da meta"],
+                  ["Categorias", "Perfil → Minhas Categorias → Nova categoria"],
+                  ["Resumo financeiro", "Início ou Perfil → Minhas Finanças"],
+                  ["Alertas", "Início ou Perfil → Meus Alertas → histórico filtrado pela categoria ou Metas"],
+                  ["Din", "Botão flutuante → chat"],
+                  ["Perfil", "Ocultar valores ao abrir, lembrete diário, restaurar dados de demonstração e sair"],
+                ].map(([t, d], i) => (
+                  <li key={t} className="flex items-start gap-3 rounded-lg border border-border bg-card px-4 py-3">
+                    <span className="font-heading text-sm font-bold text-primary">F{i + 1}</span>
+                    <p className="font-body text-sm text-foreground/85">
+                      <strong className="font-semibold text-foreground">{t}:</strong> {d}
+                    </p>
+                  </li>
+                ))}
+              </ol>
+              <Body>
+                <p>As quatro tarefas do teste de navegação estão nos fluxos 2, 4, 6 e 8.</p>
+              </Body>
+
               {MVP_SHOTS.length > 0 && (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
                   {MVP_SHOTS.map((s) => (
@@ -749,8 +777,8 @@ const Project3 = () => {
               )}
 
               <SubTitle>Ferramentas e linguagens</SubTitle>
-              {/* TODO: Luiza preencher (remover Recharts, Vitest ou Vite se não foram usados) */}
-              <Chips items={["Figma Make (IA)", "Prompt engineering", "TypeScript", "React", "React Router", "Tailwind CSS", "Recharts [CONFIRMAR]", "Lucide", "Vitest [CONFIRMAR]", "Vite [CONFIRMAR]"]} />
+              {/* TODO: Luiza preencher (remover Vitest se não foi usado) */}
+              <Chips items={["Figma Make (IA)", "Prompt engineering", "TypeScript", "React", "React Router", "Tailwind CSS", "Recharts", "Lucide", "Vitest [CONFIRMAR]", "Vite"]} />
 
               <SubTitle>Arquitetura</SubTitle>
               <Body>
@@ -783,10 +811,9 @@ const Project3 = () => {
               />
 
               <SubTitle>APIs do navegador</SubTitle>
-              {/* TODO: Luiza preencher (confirmar se a Web Speech API foi implementada) */}
               <Body>
                 <p>
-                  Nenhuma API paga ou com chave. Usa localStorage (persistência), Intl.NumberFormat (R$ 1.818,81), Web Speech API (microfone na Din, quando o navegador suporta) e a impressão do navegador (PDF). [CONFIRMAR: Web Speech foi implementada?]
+                  Nenhuma API paga ou com chave. Usa localStorage (persistência), Intl.NumberFormat (R$ 1.818,81), Web Speech API (microfone na Din, quando o navegador suporta) e a impressão do navegador (PDF).
                 </p>
               </Body>
 

@@ -49,11 +49,11 @@ App mobile de finanças pessoais para quem começa a controlar o dinheiro e aban
 | Geração | Figma Make (IA) + prompt engineering | Gerar o app a partir do documento de requisitos |
 | Linguagem | TypeScript | Tipagem dos modelos |
 | UI | React | Componentes e estado |
-| Rotas | React Router | Telas com URL própria |
+| Rotas | React Router | 19 rotas, uma por tela |
 | Estilo | Tailwind CSS | Identidade visual do Figma |
-| Gráficos | Recharts [CONFIRMAR] | Despesas por categoria e evolução do saldo |
+| Gráficos | Recharts | Despesas por categoria e evolução do saldo |
 | Ícones | Lucide | Ícones da interface |
-| Build | Vite [CONFIRMAR] | Servidor de desenvolvimento e build |
+| Build | Vite | Servidor de desenvolvimento e build |
 | Testes | Vitest [CONFIRMAR] | Testes unitários das regras |
 
 ## 3. Arquitetura
@@ -65,6 +65,21 @@ SPA (single-page application) que roda no navegador, sem servidor próprio. Inte
 - Estado global com Context API.
 
 Navegação: barra inferior com Início, Pesquisar, Transações (Registro, Histórico) e Meu perfil (Metas, Resumo Financeiro, Categorias, Alertas). O botão flutuante da Din aparece em todas as telas.
+
+Telas (19): Boas-vindas, Login, Cadastro, Onboarding, Início, Pesquisar, Transações, Nova transação, Histórico, Minhas Metas, Nova meta, Detalhe da meta, Minhas Categorias, Nova categoria, Meus Alertas, Minhas Finanças (Resumo Financeiro), Din, Meu perfil e 404.
+
+Fluxos (9):
+1. Acesso: Boas-vindas → Login (ou conta de demonstração) ou Cadastro → Onboarding → Início.
+2. Registrar transação: Início ou Transações → Nova transação, com atalho para criar categoria.
+3. Consultar: Transações → Histórico, e a aba Pesquisar.
+4. Metas: Perfil, Início ou Onboarding → Minhas Metas → Nova meta ou detalhe da meta.
+5. Categorias: Perfil → Minhas Categorias → Nova categoria.
+6. Resumo financeiro: Início ou Perfil → Minhas Finanças.
+7. Alertas: Início ou Perfil → Meus Alertas → histórico filtrado pela categoria ou Metas.
+8. Din: botão flutuante → chat.
+9. Perfil: ocultar valores ao abrir, lembrete diário, restaurar dados de demonstração e sair.
+
+As 4 tarefas do teste de navegação estão nos fluxos 2, 4, 6 e 8.
 
 Decisão de arquitetura: como os dados ficam atrás de load()/save(), dá para trocar o localStorage por um banco (ex.: Supabase) sem refazer as telas.
 
@@ -85,7 +100,7 @@ Decisão de arquitetura: como os dados ficam atrás de load()/save(), dá para t
 Nenhuma API paga ou com chave. Usa APIs nativas do navegador:
 - Web Storage / localStorage (persistência)
 - Intl.NumberFormat (moeda: R$ 1.818,81)
-- Web Speech API (microfone na Din, quando o navegador suporta) [CONFIRMAR]
+- Web Speech API (microfone na Din, quando o navegador suporta)
 - Impressão do navegador (PDF)
 
 ## 7. Heurísticas de Nielsen aplicadas
@@ -101,7 +116,7 @@ Nenhuma API paga ou com chave. Usa APIs nativas do navegador:
 ## 8. Processo de UX (técnicas)
 Em equipe (2025): questionário no Google Forms com fluxos condicionais (18 respostas) → análise dos dados → benchmarking (Organizze e Mobills) → 6 proto-personas (hipóteses, não validadas com entrevistas) → histórias de usuário → requisitos com apoio de IA (ChatGPT e Claude, refinados pela equipe) → caso de uso (UML) → wireframe → protótipo de alta fidelidade → teste de navegação com 4 tarefas.
 
-No MVP (2026): documento de requisitos com contexto, identidade visual, 20 telas, regras de negócio, dados de demonstração, arquitetura e critérios de aceite → prompt engineering no Figma Make → revisão tela a tela contra os 4 fluxos do teste.
+No MVP (2026): documento de requisitos com contexto, identidade visual, 20 telas, regras de negócio, dados de demonstração, arquitetura e critérios de aceite → prompt engineering no Figma Make → revisão tela a tela contra os 4 fluxos do teste → MVP com 19 telas e 9 fluxos.
 
 Identidade visual: verde #237A57, roxo #6B3FA0, verde claro #D6EDE3, lilás #D9C8EC, vermelho #E5484D (só para erro e limite estourado) [CONFIRMAR hex]; Nunito [CONFIRMAR] em títulos e valores, Roboto em textos.
 
