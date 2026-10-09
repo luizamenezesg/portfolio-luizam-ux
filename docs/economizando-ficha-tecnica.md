@@ -1,6 +1,8 @@
 # Economizando — Ficha técnica para o portfólio
 
 ## Em uma frase
+[MVP em funcionamento](https://blush-wasp-65034501.figma.site/) · Pesquisa e protótipos em 2023 · MVP em 2026
+
 Web app que compara preços de supermercado entre mercados próximos ao usuário, calcula o preço por kg/L/unidade para comparar embalagens de tamanhos diferentes e ajuda a montar e compartilhar listas de compras. Do protótipo de UX (curso EBAC) a um MVP funcional gerado com IA no Figma Make.
 
 ## 1. Requisitos

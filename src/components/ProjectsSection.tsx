@@ -5,9 +5,9 @@ const projects = [
 {
   slug: "/projeto/comparacao-precos",
   title: "Plataforma de Comparação de Preços",
-  subtitle: "UX Research • Interfaces Responsivas",
+  subtitle: "UX Research • Product Design • MVP",
   description:
-  "Desenvolvimento de plataforma focada em eficiência e clareza, utilizando pesquisa qualitativa e testes de usabilidade para otimizar o processo de decisão de compra."
+  "Da pesquisa com usuários a um MVP funcional: plataforma que mostra onde cada produto está mais barato perto de você, calcula o preço por kg e organiza listas compartilháveis."
 },
 {
   slug: "/projeto/gestao-academica",
