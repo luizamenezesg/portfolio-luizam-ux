@@ -22,7 +22,7 @@ import mvpCompararImg from "@/assets/project1-mvp-comparar.jpg";
 import mvpListaImg from "@/assets/project1-mvp-lista.jpg";
 import mvpAvaliacoesImg from "@/assets/project1-mvp-avaliacoes.jpg";
 
-const MVP_URL = "#"; // TODO: link publicado do MVP (Figma Make)
+const MVP_URL = "https://blush-wasp-65034501.figma.site/";
 const PROTO_APP_URL =
   "https://www.figma.com/proto/scbZWkNkfk6vhWjP9AqQkt/Projeto-EBAC---Curso-UX-Design?page-id=0%3A1&node-id=83-462&starting-point-node-id=24%3A99&t=wCnw2q0d6kUPJanY-1";
 const PROTO_SITE_URL =
