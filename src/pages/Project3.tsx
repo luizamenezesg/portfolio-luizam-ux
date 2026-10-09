@@ -536,9 +536,9 @@ const Project3 = () => {
               <GridCards
                 items={[
                   { t: "Saldo", d: "Receitas − despesas pagas. O saldo projetado inclui recorrentes e contas a pagar." },
-                  { t: "Limite por categoria", d: "Alerta ao atingir 80% e ao passar de 100%, um por faixa por mês." },
-                  { t: "Contas a pagar", d: "Alerta 3 dias antes do vencimento e no dia." },
-                  { t: "Metas", d: "Valor mensal necessário = (valor-alvo − acumulado) ÷ meses restantes." },
+                  { t: "Limite por categoria", d: "Alerta amarelo ao atingir 80% e vermelho ao passar de 100%, um por faixa por mês, para não virar ruído." },
+                  { t: "Contas a pagar", d: "Alerta 3 dias antes do vencimento e no dia; “Lembrar depois” adia 1 dia." },
+                  { t: "Metas", d: "Valor mensal necessário = (valor-alvo − acumulado) ÷ meses restantes, arredondado para cima." },
                   { t: "Recorrência", d: "Transações “repetir todo mês” geradas automaticamente." },
                   { t: "Relatórios", d: "Comparação com o período anterior de mesmo tamanho." },
                 ]}
@@ -772,12 +772,13 @@ const Project3 = () => {
               />
 
               <SubTitle>Lógica principal</SubTitle>
+              <Body>
+                <p>
+                  As regras de negócio da seção de requisitos (saldo, limites, vencimentos, metas e recorrência) viraram funções nos serviços. Além delas:
+                </p>
+              </Body>
               <GridCards
                 items={[
-                  { t: "Saldo e projeção", d: "Receitas − despesas pagas; a projeção soma recorrentes e contas a pagar do mês." },
-                  { t: "Faixas de limite", d: "80% acende o alerta amarelo e 100% o vermelho, uma vez por faixa por mês, para não virar ruído." },
-                  { t: "Valor mensal da meta", d: "(alvo − acumulado) ÷ meses restantes, arredondado para cima." },
-                  { t: "Alertas de vencimento", d: "Gerados 3 dias antes e no dia; “Lembrar depois” adia 1 dia." },
                   { t: "Din por regras", d: "Identifica a intenção da pergunta (gastos, metas, vencimento, economia, saldo) e responde com os dados da usuária. A lógica fica isolada para trocar por um modelo de IA no futuro." },
                   { t: "Dados que não envelhecem", d: "Os dados de demonstração são gerados a partir do mês atual, então o MVP faz sentido em qualquer data." },
                   { t: "Exportação", d: "CSV com separador “;” e vírgula decimal (abre direto no Excel em português) e PDF pela impressão do navegador." },
