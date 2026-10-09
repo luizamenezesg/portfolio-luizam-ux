@@ -8,6 +8,8 @@ import { ImageGrid, NarrowImage, Screenshot, useLightbox } from "@/components/ca
 import { BeforeAfter, Card, CardText, CardTitle, Chips, ColorSwatch, LinkButton } from "@/components/case/Cards";
 import { CaseHero, KeyNumbers } from "@/components/case/CaseHero";
 import { CaseNav } from "@/components/case/CaseNav";
+import { FontSpecimen } from "@/components/case/FontSpecimen";
+import { Timeline } from "@/components/case/Timeline";
 
 import iconesNavImg from "@/assets/project1-icones-nav.png";
 import iconesUiImg from "@/assets/project1-icones-ui.png";
@@ -27,38 +29,6 @@ import mvpListaImg from "@/assets/project1-mvp-lista.jpg";
 import mvpAvaliacoesImg from "@/assets/project1-mvp-avaliacoes.jpg";
 
 const MVP_URL = "https://blush-wasp-65034501.figma.site/";
-
-/* ── Font specimen ── */
-
-const FontSpecimen = () => (
-  <div className="my-8 rounded-xl border border-border bg-card p-6 md:p-8 space-y-6">
-    <div>
-      <p className="font-body text-[11px] tracking-[0.2em] uppercase text-muted-foreground mb-3">Inter — Font Family</p>
-    </div>
-    {[
-      { weight: "font-light", label: "Light 300", size: "text-3xl md:text-4xl" },
-      { weight: "font-normal", label: "Regular 400", size: "text-3xl md:text-4xl" },
-      { weight: "font-medium", label: "Medium 500", size: "text-2xl md:text-3xl" },
-      { weight: "font-semibold", label: "Semi Bold 600", size: "text-xl md:text-2xl" },
-      { weight: "font-bold", label: "Bold 700", size: "text-lg md:text-xl" },
-    ].map((spec) => (
-      <div key={spec.label} className="flex flex-col gap-1">
-        <span className="font-body text-xs text-muted-foreground tracking-wide">{spec.label}</span>
-        <p className={`font-body ${spec.weight} ${spec.size} text-foreground leading-tight`}>
-          Economizando
-        </p>
-      </div>
-    ))}
-    <div className="pt-4 border-t border-border space-y-2">
-      <p className="font-body text-xs text-muted-foreground tracking-wide">Escala tipográfica</p>
-      <p className="font-body text-[40px] font-bold text-foreground leading-none">Aa</p>
-      <p className="font-body text-2xl font-semibold text-foreground/90">Heading — 24px Semi Bold</p>
-      <p className="font-body text-base text-foreground/85">Body — 16px Regular. A fonte Inter foi escolhida por sua alta legibilidade e familiaridade.</p>
-      <p className="font-body text-sm text-muted-foreground">Caption — 14px Regular</p>
-      <p className="font-body text-xs text-muted-foreground">Overline — 12px Medium</p>
-    </div>
-  </div>
-);
 
 /* ── page ── */
 
@@ -446,7 +416,11 @@ const Project1 = () => {
                   Inter: alta legibilidade no celular e no computador, e familiar para quem já usa apps de supermercado e e-commerce, o que reduz a curva de aprendizado.
                 </p>
               </Body>
-              <FontSpecimen />
+              <FontSpecimen
+                fontName="Inter"
+                sample="Economizando"
+                description="A fonte Inter foi escolhida por sua alta legibilidade e familiaridade."
+              />
 
               <h4 className="font-heading text-lg font-semibold text-foreground mt-10 mb-4">Ícones</h4>
               <Body>
@@ -485,8 +459,9 @@ const Project1 = () => {
                   O projeto nasceu em 2023, na formação em UX Design da EBAC. Em 2026, retomei o Economizando para transformá-lo em um produto funcional. A pesquisa e os requisitos são os mesmos; o design do MVP foi atualizado e é diferente dos protótipos originais.
                 </p>
               </Body>
-              <ol className="relative border-l-2 border-primary/30 ml-3 mt-10 space-y-10">
-                {[
+              <Timeline
+                highlightYear="2026"
+                items={[
                   {
                     year: "2023",
                     title: "Pesquisa e definição",
@@ -512,21 +487,8 @@ const Project1 = () => {
                     title: "Design atualizado",
                     text: "Mantive a pesquisa, os fluxos, os requisitos e a identidade (azul #162C9A e amarelo #FFD027). Layout e componentes foram renovados para uma interface mais atual e responsiva, por isso o MVP é diferente dos protótipos de 2023.",
                   },
-                ].map((item) => (
-                  <li key={item.title} className="ml-8">
-                    <span
-                      className={`absolute -left-[9px] mt-1.5 w-4 h-4 rounded-full border-4 border-background ${
-                        item.year === "2026" ? "bg-secondary" : "bg-primary"
-                      }`}
-                    />
-                    <p className={`font-heading text-sm font-bold ${item.year === "2026" ? "text-secondary" : "text-primary"}`}>
-                      {item.year}
-                    </p>
-                    <h4 className="font-heading text-lg font-semibold text-foreground mt-1">{item.title}</h4>
-                    <p className="font-body text-[15px] text-foreground/80 leading-relaxed mt-1">{item.text}</p>
-                  </li>
-                ))}
-              </ol>
+                ]}
+              />
             </section>
 
             <Divider />

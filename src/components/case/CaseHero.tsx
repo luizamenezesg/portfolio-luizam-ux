@@ -28,7 +28,8 @@ export const CaseHero = ({
   title: React.ReactNode;
   subtitle: React.ReactNode;
   facts: Fact[];
-  cover: Cover;
+  /** Sem capa, o hero termina na ficha e nos botões. */
+  cover?: Cover;
   /** Botões ao lado da ficha, como o link do MVP. */
   actions?: React.ReactNode;
   onOpen: OpenImage;
@@ -67,20 +68,22 @@ export const CaseHero = ({
       </div>
     </header>
 
-    <div className="px-6 md:px-12 lg:px-20">
-      <figure className="max-w-[1100px] mx-auto">
-        <ClickableImage
-          src={cover.src}
-          alt={cover.alt}
-          width={cover.width}
-          height={cover.height}
-          eager
-          className="w-full rounded-2xl border border-border shadow-xl mt-6"
-          onOpen={onOpen}
-        />
-        <figcaption className="font-body text-sm text-muted-foreground mt-3 text-center">{cover.caption}</figcaption>
-      </figure>
-    </div>
+    {cover && (
+      <div className="px-6 md:px-12 lg:px-20">
+        <figure className="max-w-[1100px] mx-auto">
+          <ClickableImage
+            src={cover.src}
+            alt={cover.alt}
+            width={cover.width}
+            height={cover.height}
+            eager
+            className="w-full rounded-2xl border border-border shadow-xl mt-6"
+            onOpen={onOpen}
+          />
+          <figcaption className="font-body text-sm text-muted-foreground mt-3 text-center">{cover.caption}</figcaption>
+        </figure>
+      </div>
+    )}
   </>
 );
 
