@@ -23,10 +23,6 @@ import mvpListaImg from "@/assets/project1-mvp-lista.jpg";
 import mvpAvaliacoesImg from "@/assets/project1-mvp-avaliacoes.jpg";
 
 const MVP_URL = "https://blush-wasp-65034501.figma.site/";
-const PROTO_APP_URL =
-  "https://www.figma.com/proto/scbZWkNkfk6vhWjP9AqQkt/Projeto-EBAC---Curso-UX-Design?page-id=0%3A1&node-id=83-462&starting-point-node-id=24%3A99&t=wCnw2q0d6kUPJanY-1";
-const PROTO_SITE_URL =
-  "https://www.figma.com/proto/TvuQdcNCi6VE9JKHAURNbj/Projeto-EBAC---Curso-Figma---Site?page-id=0%3A1&node-id=108-437&starting-point-node-id=108%3A812&scaling=contain&content-scaling=fixed&t=5FP5ezxRQvgzZQR3-1";
 
 const LinkButton = ({ href, children, primary = false }: { href: string; children: React.ReactNode; primary?: boolean }) => (
   <a
@@ -372,12 +368,6 @@ const Project1 = () => {
                 </div>
               ))}
             </div>
-
-            <div className="flex flex-wrap gap-3 mt-8">
-              <LinkButton href={MVP_URL} primary>Ver MVP em funcionamento</LinkButton>
-              <LinkButton href={PROTO_SITE_URL}>Protótipo site (Figma)</LinkButton>
-              <LinkButton href={PROTO_APP_URL}>Protótipo app (Figma)</LinkButton>
-            </div>
           </div>
         </header>
 
@@ -436,24 +426,6 @@ const Project1 = () => {
                     <p className="font-body text-sm text-foreground/80 mt-2 leading-snug">{s.t}</p>
                   </div>
                 ))}
-              </div>
-
-              <SubTitle>Linha do tempo</SubTitle>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="rounded-xl border border-border bg-card p-5 border-l-4 border-l-primary">
-                  <p className="font-heading text-2xl font-bold text-primary">2023</p>
-                  <CardTitle>Pesquisa, UX e protótipos</CardTitle>
-                  <CardText>
-                    Projeto da formação em UX Design da EBAC: pesquisa, personas, testes de usabilidade e protótipos de alta fidelidade para app e site, no Figma.
-                  </CardText>
-                </div>
-                <div className="rounded-xl border border-border bg-card p-5 border-l-4 border-l-secondary">
-                  <p className="font-heading text-2xl font-bold text-secondary">2026</p>
-                  <CardTitle>MVP funcional</CardTitle>
-                  <CardText>
-                    Três anos depois, retomei o projeto e o transformei em um produto navegável com IA (Figma Make). A pesquisa e os requisitos são os mesmos; o design foi atualizado e é diferente dos protótipos originais.
-                  </CardText>
-                </div>
               </div>
 
               <SubTitle>Habilidades demonstradas</SubTitle>
@@ -808,22 +780,73 @@ const Project1 = () => {
                 onOpen={openLightbox}
               />
 
-              <SubTitle>Protótipos navegáveis originais (2023)</SubTitle>
+              <SubTitle>Protótipos navegáveis (2023)</SubTitle>
               <Body>
-                <p>Os protótipos de alta fidelidade feitos em 2023, para app e site, no design original. Navegue aqui ou abra no Figma:</p>
+                <p>Protótipos de alta fidelidade para app e site, no design original de 2023. Navegue direto aqui ou abra no Figma:</p>
               </Body>
-              <div className="flex flex-wrap gap-3 my-6">
-                <LinkButton href={PROTO_APP_URL}>Abrir protótipo do app no Figma</LinkButton>
-                <LinkButton href={PROTO_SITE_URL}>Abrir protótipo do site no Figma</LinkButton>
-              </div>
               <FigmaEmbed
                 title="Protótipo App"
-                protoUrl={PROTO_APP_URL}
+                protoUrl="https://www.figma.com/proto/scbZWkNkfk6vhWjP9AqQkt/Projeto-EBAC---Curso-UX-Design?page-id=0%3A1&node-id=83-462&starting-point-node-id=24%3A99&t=wCnw2q0d6kUPJanY-1"
               />
               <FigmaEmbed
                 title="Protótipo Site"
-                protoUrl={PROTO_SITE_URL}
+                protoUrl="https://www.figma.com/proto/TvuQdcNCi6VE9JKHAURNbj/Projeto-EBAC---Curso-Figma---Site?page-id=0%3A1&node-id=108-437&starting-point-node-id=108%3A812&scaling=contain&content-scaling=fixed&t=5FP5ezxRQvgzZQR3-1"
               />
+            </section>
+
+            <Divider />
+
+            {/* ─ Linha do tempo ─ */}
+            <section>
+              <SectionLabel>Linha do tempo</SectionLabel>
+              <SectionTitle>De 2023 a 2026: o que mudou</SectionTitle>
+              <Body>
+                <p>
+                  O projeto nasceu em 2023, na formação em UX Design da EBAC. Em 2026, retomei o Economizando para transformá-lo em um produto funcional. A pesquisa e os requisitos são os mesmos; o design do MVP foi atualizado e é diferente dos protótipos originais.
+                </p>
+              </Body>
+              <ol className="relative border-l-2 border-primary/30 ml-3 mt-10 space-y-10">
+                {[
+                  {
+                    year: "2023",
+                    title: "Pesquisa e definição",
+                    text: "Desk research, proto-persona, Matriz CSD, benchmarking, questionário, personas, mapas de empatia, jornadas, needs statement e grid de priorização.",
+                  },
+                  {
+                    year: "2023",
+                    title: "Protótipos e testes",
+                    text: "Wireframes, análise heurística de um concorrente e teste de usabilidade com três usuários. Os resultados ajustaram o UX writing e a interface.",
+                  },
+                  {
+                    year: "2023",
+                    title: "Design visual e alta fidelidade",
+                    text: "Tom de voz, paleta azul e amarela, tipografia Inter, ícones e protótipos navegáveis para app (mobile) e site (desktop) no Figma.",
+                  },
+                  {
+                    year: "2026",
+                    title: "MVP funcional",
+                    text: "Documento de requisitos baseado na pesquisa e prompt engineering no Figma Make (IA). O produto ganhou busca, cálculo do preço por kg, comparação, listas compartilháveis e avaliações funcionando de verdade.",
+                  },
+                  {
+                    year: "2026",
+                    title: "Design atualizado",
+                    text: "Mantive a pesquisa, os fluxos, os requisitos e a identidade (azul #162C9A e amarelo #FFD027). Layout e componentes foram renovados para uma interface mais atual e responsiva, por isso o MVP é diferente dos protótipos de 2023.",
+                  },
+                ].map((item) => (
+                  <li key={item.title} className="ml-8">
+                    <span
+                      className={`absolute -left-[9px] mt-1.5 w-4 h-4 rounded-full border-4 border-background ${
+                        item.year === "2026" ? "bg-secondary" : "bg-primary"
+                      }`}
+                    />
+                    <p className={`font-heading text-sm font-bold ${item.year === "2026" ? "text-secondary" : "text-primary"}`}>
+                      {item.year}
+                    </p>
+                    <h4 className="font-heading text-lg font-semibold text-foreground mt-1">{item.title}</h4>
+                    <p className="font-body text-[15px] text-foreground/80 leading-relaxed mt-1">{item.text}</p>
+                  </li>
+                ))}
+              </ol>
             </section>
 
             <Divider />
@@ -834,13 +857,10 @@ const Project1 = () => {
               <SectionTitle>MVP funcional (2026)</SectionTitle>
               <Body>
                 <p>
-                  Em 2026, retomei o projeto para testar se a solução funcionava de verdade e o transformei em um produto navegável. Escrevi um documento de requisitos a partir da pesquisa e usei prompt engineering no Figma Make (IA) para gerar o código. Depois revisei o resultado contra critérios de aceite baseados nas tarefas do teste de usabilidade.
+                  Em 2026, para testar se a solução funcionava de verdade, transformei o protótipo em um produto navegável. Escrevi um documento de requisitos a partir da pesquisa e usei prompt engineering no Figma Make (IA) para gerar o código. Depois revisei o resultado contra critérios de aceite baseados nas tarefas do teste de usabilidade.
                 </p>
               </Body>
 
-              <Insight label="Design diferente do original">
-                O MVP não reproduz os protótipos de 2023 tela a tela. A pesquisa, os fluxos, os requisitos e a identidade (azul #162C9A e amarelo #FFD027) foram mantidos, mas o layout e os componentes foram atualizados para uma interface mais atual e responsiva.
-              </Insight>
               <div className="flex flex-wrap gap-3 mt-6">
                 <LinkButton href={MVP_URL} primary>Ver MVP em funcionamento</LinkButton>
               </div>
