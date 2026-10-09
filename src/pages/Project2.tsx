@@ -25,8 +25,8 @@ import telaTarefas from "@/assets/tela-tarefas.png";
 /* Se ficar vazio, a seção do MVP e o botão do hero não aparecem. */
 const MVP_URL = "https://unify-wifi-52683631.figma.site";
 
-/* TODO: Luiza preencher — [PREENCHER] link público do guia de estilo do Centro Paula Souza. */
-const CPS_GUIDE_URL = "";
+/* Guia de estilo público do Centro Paula Souza. */
+const CPS_GUIDE_URL = "https://cps.sp.gov.br/guia-estilo/";
 
 /* Screenshots do MVP: basta salvar gestao-mvp-1.jpg, gestao-mvp-2.jpg e gestao-mvp-3.jpg em src/assets. */
 const MVP_SHOTS = Object.entries(
@@ -586,8 +586,8 @@ const Project2 = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                 <ColorSwatch color="#A0C340" name="Verde" description="verde-base · enviar atividade, entregue" />
                 <ColorSwatch color="#D32719" name="Cancelado" description="Enviar dúvida, atrasado" />
-                {/* TODO: Luiza preencher — confirmar o token e o hex do amarelo de eventos no guia do CPS */}
-                <ColorSwatch color="#FFD800" name="Amarelo" description="Eventos na agenda [CONFIRMAR token]" />
+                {/* Amarelo usado nas telas; não é token do guia (o mais próximo é crayola-base #FFC24C). */}
+                <ColorSwatch color="#FFD800" name="Amarelo" description="Eventos na agenda" />
               </div>
 
               <SubTitle>Tipografia</SubTitle>
