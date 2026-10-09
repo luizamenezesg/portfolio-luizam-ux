@@ -11,10 +11,10 @@ const projects = [
 },
 {
   slug: "/projeto/gestao-academica",
-  title: "Sistema de Gestão Acadêmica — FATEC",
-  subtitle: "UX Design & Estratégia de Produto",
+  title: "Centro de Línguas Fatec — Gestão Acadêmica",
+  subtitle: "UX Research • Product Design • UI Design",
   description:
-  "Otimização de processos acadêmicos do Centro Paula Souza, transformando jornadas manuais em uma plataforma integrada com foco em usabilidade e organização."
+  "Projetei um hub acadêmico que reúne cursos, tarefas, notas, agenda e certificados, tirando o aluno de uma rotina espalhada entre Teams, e-mail e planilhas. Do levantamento de requisitos ao protótipo navegável e MVP funcional, seguindo o guia de estilo do Centro Paula Souza."
 },
 {
   slug: "/projeto/planejadin",

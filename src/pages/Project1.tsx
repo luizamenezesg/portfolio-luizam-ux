@@ -1,9 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { ArrowLeft, ArrowRight, ExternalLink, X } from "lucide-react";
+import { useEffect } from "react";
+import { ArrowRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FigmaEmbed from "@/components/FigmaEmbed";
+import { Body, BulletList, Divider, Insight, Quote, SectionLabel, SectionTitle, SubTitle } from "@/components/case/Typography";
+import { ImageGrid, NarrowImage, Screenshot, useLightbox } from "@/components/case/Images";
+import { BeforeAfter, Card, CardText, CardTitle, Chips, ColorSwatch, LinkButton } from "@/components/case/Cards";
+import { CaseHero, KeyNumbers } from "@/components/case/CaseHero";
+import { CaseNav } from "@/components/case/CaseNav";
 
 import iconesNavImg from "@/assets/project1-icones-nav.png";
 import iconesUiImg from "@/assets/project1-icones-ui.png";
@@ -23,186 +27,6 @@ import mvpListaImg from "@/assets/project1-mvp-lista.jpg";
 import mvpAvaliacoesImg from "@/assets/project1-mvp-avaliacoes.jpg";
 
 const MVP_URL = "https://blush-wasp-65034501.figma.site/";
-
-const LinkButton = ({ href, children, primary = false }: { href: string; children: React.ReactNode; primary?: boolean }) => (
-  <a
-    href={href}
-    target="_blank"
-    rel="noopener noreferrer"
-    className={`inline-flex items-center gap-2 rounded-full px-5 py-2.5 font-body text-sm font-medium transition-colors min-h-[44px] ${
-      primary
-        ? "bg-primary text-primary-foreground hover:bg-primary/90"
-        : "border border-border bg-card text-foreground hover:border-primary hover:text-primary"
-    }`}
-  >
-    {children} <ExternalLink size={14} />
-  </a>
-);
-
-/* ── Lightbox ── */
-
-const Lightbox = ({ src, alt, onClose }: { src: string; alt: string; onClose: () => void }) => (
-  <div
-    className="fixed inset-0 z-50 flex items-center justify-center bg-background/90 backdrop-blur-sm p-4 animate-fade-in cursor-zoom-out"
-    onClick={onClose}
-  >
-    <button
-      onClick={onClose}
-      className="absolute top-6 right-6 text-foreground/70 hover:text-foreground transition-colors z-50"
-      aria-label="Fechar"
-    >
-      <X size={28} />
-    </button>
-    <img
-      src={src}
-      alt={alt}
-      className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
-      onClick={(e) => e.stopPropagation()}
-    />
-  </div>
-);
-
-/* ── tiny reusable blocks ── */
-
-const Quote = ({ children }: { children: React.ReactNode }) => (
-  <blockquote className="my-12 md:my-16 border-l-4 border-primary pl-6 md:pl-8 py-2">
-    <p className="font-heading text-xl md:text-2xl font-semibold text-foreground/90 leading-relaxed italic">
-      {children}
-    </p>
-  </blockquote>
-);
-
-const Insight = ({ label, children }: { label: string; children: React.ReactNode }) => (
-  <div className="rounded-2xl bg-accent/60 border border-border p-6 md:p-8">
-    <span className="font-body text-[11px] tracking-[0.2em] uppercase text-primary font-semibold">
-      {label}
-    </span>
-    <p className="font-body text-base text-foreground/85 leading-relaxed mt-2">{children}</p>
-  </div>
-);
-
-const SectionLabel = ({ children }: { children: React.ReactNode }) => (
-  <p className="font-body text-xs tracking-[0.25em] uppercase text-primary font-semibold mb-3">
-    {children}
-  </p>
-);
-
-const SectionTitle = ({ children }: { children: React.ReactNode }) => (
-  <h2 className="font-heading text-[28px] md:text-[36px] font-bold text-foreground leading-tight mb-6">
-    {children}
-  </h2>
-);
-
-const SubTitle = ({ children }: { children: React.ReactNode }) => (
-  <h3 className="font-heading text-xl md:text-2xl font-semibold text-foreground mb-4 mt-10">
-    {children}
-  </h3>
-);
-
-const Body = ({ children }: { children: React.ReactNode }) => (
-  <div className="font-body text-base text-foreground/85 leading-[1.8] space-y-5">
-    {children}
-  </div>
-);
-
-const BulletList = ({ items }: { items: string[] }) => (
-  <ul className="space-y-3 my-5">
-    {items.map((item) => (
-      <li key={item} className="flex items-start gap-3 font-body text-[15px] text-foreground/85 leading-relaxed">
-        <span className="w-1.5 h-1.5 rounded-full bg-primary mt-[9px] flex-shrink-0" />
-        {item}
-      </li>
-    ))}
-  </ul>
-);
-
-const Divider = () => (
-  <div className="flex items-center justify-center my-16 md:my-20">
-    <div className="w-12 h-[2px] bg-primary/30 rounded-full" />
-  </div>
-);
-
-/* ── Clickable image components ── */
-
-const ClickableImage = ({
-  src,
-  alt,
-  className = "",
-  onOpen,
-}: {
-  key?: React.Key;
-  src: string;
-  alt: string;
-  className?: string;
-  onOpen: (src: string, alt: string) => void;
-}) => (
-  <img
-    src={src}
-    alt={alt}
-    className={`cursor-zoom-in hover:opacity-90 transition-opacity ${className}`}
-    loading="lazy"
-    onClick={() => onOpen(src, alt)}
-  />
-);
-
-const FullWidthImage = ({
-  src,
-  alt,
-  onOpen,
-}: {
-  src: string;
-  alt: string;
-  onOpen: (src: string, alt: string) => void;
-}) => (
-  <div className="my-12 md:my-16 -mx-6 md:-mx-12 lg:-mx-20">
-    <ClickableImage src={src} alt={alt} className="w-full" onOpen={onOpen} />
-  </div>
-);
-
-const NarrowImage = ({
-  src,
-  alt,
-  maxWidth,
-  onOpen,
-}: {
-  src: string;
-  alt: string;
-  maxWidth?: string;
-  onOpen: (src: string, alt: string) => void;
-}) => (
-  <div className="my-8 mx-auto" style={maxWidth ? { maxWidth } : undefined}>
-    <ClickableImage
-      src={src}
-      alt={alt}
-      className="w-full rounded-xl border border-border shadow-sm"
-      onOpen={onOpen}
-    />
-  </div>
-);
-
-const ImageGrid = ({
-  images,
-  onOpen,
-}: {
-  images: { src: string; alt: string }[];
-  onOpen: (src: string, alt: string) => void;
-}) => (
-  <div
-    className={`grid gap-4 my-8 ${
-      images.length === 2 ? "grid-cols-1 md:grid-cols-2" : "grid-cols-1 md:grid-cols-3"
-    }`}
-  >
-    {images.map((img) => (
-      <ClickableImage
-        key={img.alt}
-        src={img.src}
-        alt={img.alt}
-        className="w-full rounded-xl border border-border shadow-sm"
-        onOpen={onOpen}
-      />
-    ))}
-  </div>
-);
 
 /* ── Font specimen ── */
 
@@ -236,154 +60,39 @@ const FontSpecimen = () => (
   </div>
 );
 
-/* ── new blocks for the recruiter-oriented case ── */
-
-const Card = ({ children, className = "" }: { key?: React.Key; children: React.ReactNode; className?: string }) => (
-  <div className={`rounded-xl border border-border bg-card p-5 ${className}`}>{children}</div>
-);
-
-const CardTitle = ({ children }: { children: React.ReactNode }) => (
-  <h4 className="font-heading text-sm font-semibold text-foreground">{children}</h4>
-);
-
-const CardText = ({ children }: { children: React.ReactNode }) => (
-  <p className="font-body text-sm text-muted-foreground mt-1 leading-relaxed">{children}</p>
-);
-
-const Chips = ({ items }: { items: string[] }) => (
-  <div className="flex flex-wrap gap-2 mt-3">
-    {items.map((item) => (
-      <span
-        key={item}
-        className="font-body text-xs text-foreground/80 bg-accent/70 border border-border rounded-full px-3 py-1"
-      >
-        {item}
-      </span>
-    ))}
-  </div>
-);
-
-const Screenshot = ({
-  src,
-  alt,
-  caption,
-  onOpen,
-}: {
-  src: string;
-  alt: string;
-  caption: string;
-  onOpen: (src: string, alt: string) => void;
-}) => (
-  <figure className="my-6">
-    <ClickableImage
-      src={src}
-      alt={alt}
-      className="w-full rounded-xl border border-border shadow-sm"
-      onOpen={onOpen}
-    />
-    <figcaption className="font-body text-sm text-muted-foreground mt-3 leading-relaxed">{caption}</figcaption>
-  </figure>
-);
-
-const BeforeAfter = ({ rows }: { rows: { before: string; after: string; why: string }[] }) => (
-  <div className="my-8 rounded-xl border border-border overflow-hidden">
-    <div className="hidden md:grid grid-cols-[1fr_1fr_1.3fr] bg-accent/60 px-5 py-3 font-body text-[11px] tracking-[0.2em] uppercase text-primary font-semibold">
-      <span>Antes</span>
-      <span>Depois</span>
-      <span>Por quê</span>
-    </div>
-    {rows.map((row) => (
-      <div
-        key={row.after}
-        className="grid grid-cols-1 md:grid-cols-[1fr_1fr_1.3fr] gap-1 md:gap-4 px-5 py-4 border-t border-border first:border-t-0 md:first:border-t bg-card"
-      >
-        <span className="font-body text-sm text-muted-foreground line-through decoration-muted-foreground/50">{row.before}</span>
-        <span className="font-body text-sm font-semibold text-foreground">{row.after}</span>
-        <span className="font-body text-sm text-foreground/75">{row.why}</span>
-      </div>
-    ))}
-  </div>
-);
-
 /* ── page ── */
 
 const Project1 = () => {
-  const [lightbox, setLightbox] = useState<{ src: string; alt: string } | null>(null);
-
-  const openLightbox = (src: string, alt: string) => setLightbox({ src, alt });
-  const closeLightbox = () => setLightbox(null);
+  const { open: openLightbox, lightbox } = useLightbox();
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Lock body scroll when lightbox is open
-  useEffect(() => {
-    if (lightbox) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [lightbox]);
-
   return (
     <>
       <Navbar />
 
-      {lightbox && <Lightbox src={lightbox.src} alt={lightbox.alt} onClose={closeLightbox} />}
+      {lightbox}
 
       <main className="pt-24">
-        {/* ── Hero ── */}
-        <header className="px-6 md:px-12 lg:px-20 pb-8">
-          <div className="max-w-[960px] mx-auto">
-            <Link
-              to="/"
-              state={{ scrollTo: "projetos" }}
-              className="inline-flex items-center gap-2 font-body text-sm text-muted-foreground hover:text-secondary transition-colors mb-10 min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded"
-            >
-              <ArrowLeft size={16} />
-              Voltar aos projetos
-            </Link>
-            <SectionLabel>UX Research • Product Design • UI Design • MVP</SectionLabel>
-            <h1 className="font-heading text-foreground text-[40px] md:text-[52px] font-bold leading-[1.1] mb-6">
-              Economizando: comparação<br className="hidden md:block" /> de preços de supermercado
-            </h1>
-            <p className="font-body text-lg text-muted-foreground max-w-[680px] leading-relaxed">
-              Da pesquisa com usuários a um MVP funcional: uma plataforma que mostra onde cada produto está mais barato perto de você, calcula o preço por kg ou litro e organiza listas de compras compartilháveis.
-            </p>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10">
-              {[
-                { label: "Meu papel", value: "UX Researcher e Product Designer (projeto individual)" },
-                { label: "Quando", value: "Pesquisa e protótipos em 2023 · MVP funcional em 2026" },
-                { label: "Plataformas", value: "App mobile e site desktop responsivo" },
-                { label: "Ferramentas", value: "Figma e FigJam (2023) · Figma Make com IA (2026)" },
-              ].map((item) => (
-                <div key={item.label} className="border-t-2 border-primary/30 pt-3">
-                  <p className="font-body text-[11px] tracking-[0.2em] uppercase text-primary font-semibold">{item.label}</p>
-                  <p className="font-body text-sm text-foreground/85 mt-1 leading-relaxed">{item.value}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </header>
-
-        <div className="px-6 md:px-12 lg:px-20">
-          <div className="max-w-[1100px] mx-auto">
-            <ClickableImage
-              src={mvpHomeImg}
-              alt="Página inicial do MVP funcional do Economizando"
-              className="w-full rounded-2xl border border-border shadow-xl mt-6"
-              onOpen={openLightbox}
-            />
-            <p className="font-body text-sm text-muted-foreground mt-3 text-center">
-              MVP funcional (2026). O visual é uma evolução do protótipo original de 2023.
-            </p>
-          </div>
-        </div>
+        <CaseHero
+          label="UX Research • Product Design • UI Design • MVP"
+          title={<>Economizando: comparação<br className="hidden md:block" /> de preços de supermercado</>}
+          subtitle="Da pesquisa com usuários a um MVP funcional: uma plataforma que mostra onde cada produto está mais barato perto de você, calcula o preço por kg ou litro e organiza listas de compras compartilháveis."
+          facts={[
+            { label: "Meu papel", value: "UX Researcher e Product Designer (projeto individual)" },
+            { label: "Quando", value: "Pesquisa e protótipos em 2023 · MVP funcional em 2026" },
+            { label: "Plataformas", value: "App mobile e site desktop responsivo" },
+            { label: "Ferramentas", value: "Figma e FigJam (2023) · Figma Make com IA (2026)" },
+          ]}
+          cover={{
+            src: mvpHomeImg,
+            alt: "Página inicial do MVP funcional do Economizando",
+            caption: "MVP funcional (2026). O visual é uma evolução do protótipo original de 2023.",
+          }}
+          onOpen={openLightbox}
+        />
 
         {/* ── Content ── */}
         <div className="px-6 md:px-12 lg:px-20 pb-20">
@@ -414,19 +123,14 @@ const Project1 = () => {
                 </Card>
               </div>
 
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
-                {[
+              <KeyNumbers
+                items={[
                   { n: "2", t: "personas definidas a partir da pesquisa" },
                   { n: "10", t: "heurísticas avaliadas em um concorrente" },
                   { n: "3 × 4", t: "usuários testados × tarefas no teste" },
                   { n: "11", t: "telas funcionais no MVP" },
-                ].map((s) => (
-                  <div key={s.t} className="rounded-xl bg-accent/60 border border-border p-5">
-                    <p className="font-heading text-3xl font-bold text-primary leading-none">{s.n}</p>
-                    <p className="font-body text-sm text-foreground/80 mt-2 leading-snug">{s.t}</p>
-                  </div>
-                ))}
-              </div>
+                ]}
+              />
 
               <SubTitle>Habilidades demonstradas</SubTitle>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -546,7 +250,7 @@ const Project1 = () => {
                   "Excesso de informação sem hierarquia clara",
                 ]}
               />
-              <Insight label="Oportunidade">
+              <Insight label="Oportunidade" className="">
                 Unir geolocalização, cálculo automático do preço por unidade e listas personalizadas e compartilháveis em uma interface simples.
               </Insight>
               <NarrowImage src={benchmarkingImg} alt="Tabela comparativa de funcionalidades — Benchmarking" onOpen={openLightbox} />
@@ -607,7 +311,7 @@ const Project1 = () => {
               />
 
               <SubTitle>Needs statement e priorização</SubTitle>
-              <Insight label="Estrutura usada">
+              <Insight label="Estrutura usada" className="">
                 "[Persona] precisa de um jeito de [necessidade] para [motivo]". Para cada persona, levantei cinco soluções possíveis e posicionei todas em um grid de impacto × esforço.
               </Insight>
               <Body>
@@ -689,7 +393,7 @@ const Project1 = () => {
                   { before: "Nenhuma confirmação", after: "Mensagem de confirmação ao adicionar", why: "Visibilidade do status do sistema" },
                 ]}
               />
-              <Insight label="Aprendizado">
+              <Insight label="Aprendizado" className="">
                 Os testes revelaram problemas de clareza que a análise heurística sozinha não teria mostrado. Termos consistentes para a mesma ação reduziram a dúvida em todas as tarefas.
               </Insight>
             </section>
@@ -725,39 +429,15 @@ const Project1 = () => {
 
               <SubTitle>Identidade visual</SubTitle>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6 mb-8">
-                <div className="flex items-center gap-4 p-5 rounded-xl border border-border bg-card">
-                  <div className="w-16 h-16 rounded-lg bg-[#162C9A] flex-shrink-0" />
-                  <div>
-                    <h5 className="font-heading text-base font-semibold text-foreground">Azul #162C9A</h5>
-                    <p className="font-body text-sm text-muted-foreground mt-1">Confiança, lealdade e competência: credibilidade para quem compara preços</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4 p-5 rounded-xl border border-border bg-card">
-                  <div className="w-16 h-16 rounded-lg bg-[#FFD027] flex-shrink-0" />
-                  <div>
-                    <h5 className="font-heading text-base font-semibold text-foreground">Amarelo #FFD027</h5>
-                    <p className="font-body text-sm text-muted-foreground mt-1">Criatividade, alegria e calor: energia nas ações principais</p>
-                  </div>
-                </div>
+                <ColorSwatch color="#162C9A" name="Azul" description="Confiança, lealdade e competência: credibilidade para quem compara preços" />
+                <ColorSwatch color="#FFD027" name="Amarelo" description="Criatividade, alegria e calor: energia nas ações principais" />
               </div>
               <p className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground font-semibold mb-4 mt-8">
                 Cores complementares
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-                <div className="flex items-center gap-4 p-5 rounded-xl border border-border bg-card">
-                  <div className="w-16 h-16 rounded-lg bg-[#1FCEF0] flex-shrink-0" />
-                  <div>
-                    <h5 className="font-heading text-base font-semibold text-foreground">Ciano #1FCEF0</h5>
-                    <p className="font-body text-sm text-muted-foreground mt-1">Frescor, modernidade e clareza</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4 p-5 rounded-xl border border-border bg-card">
-                  <div className="w-16 h-16 rounded-lg bg-[#EDEAEA] flex-shrink-0" />
-                  <div>
-                    <h5 className="font-heading text-base font-semibold text-foreground">Cinza claro #EDEAEA</h5>
-                    <p className="font-body text-sm text-muted-foreground mt-1">Neutralidade, leveza e equilíbrio</p>
-                  </div>
-                </div>
+                <ColorSwatch color="#1FCEF0" name="Ciano" description="Frescor, modernidade e clareza" />
+                <ColorSwatch color="#EDEAEA" name="Cinza claro" description="Neutralidade, leveza e equilíbrio" />
               </div>
 
               <h4 className="font-heading text-lg font-semibold text-foreground mt-10 mb-4">Tipografia</h4>
@@ -968,6 +648,8 @@ const Project1 = () => {
                 ]}
               />
             </section>
+
+            <CaseNav current="/projeto/comparacao-precos" />
           </div>
         </div>
       </main>
