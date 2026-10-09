@@ -3,7 +3,7 @@
 ## Em uma frase
 [MVP em funcionamento](https://cost-powder-53339892.figma.site) · [Protótipo no Figma](https://www.figma.com/proto/JftpPpk6ONr3l2XrQVK38H/PlanejaDin?page-id=57%3A8&node-id=57-191&starting-point-node-id=57%3A191&t=XJN1wavmKtSqNHM9-1) · Pesquisa e protótipo em 2025 (equipe) · MVP em 2026
 
-App mobile de finanças pessoais para quem começa a controlar o dinheiro e abandona: registro rápido, metas, limites por categoria, alertas, relatórios e a Din, uma assistente que responde com base nos dados do usuário. Pesquisa, requisitos e protótipo feitos em equipe na Fatec Baixada Santista "Rubens Lara" (Leonardo S. de Freitas, Luiza Menezes, Renan Ewbank e Yan Kairalla); MVP funcional gerado com IA no Figma Make em 2026 por Luiza Menezes [CONFIRMAR: projeto individual].
+App mobile de finanças pessoais para quem começa a controlar o dinheiro e abandona: registro rápido, metas, limites por categoria, alertas, relatórios e a Din, uma assistente que responde com base nos dados do usuário. Pesquisa, requisitos e protótipo feitos em um projeto acadêmico em grupo na Fatec Baixada Santista "Rubens Lara", com Luiza Menezes como UX/UI Designer; MVP funcional gerado com IA no Figma Make em 2026 por Luiza Menezes [CONFIRMAR: projeto individual].
 
 ## 1. Requisitos
 ### Requisitos de negócio

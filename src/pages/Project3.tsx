@@ -261,14 +261,11 @@ const Project3 = () => {
           title="PlanejaDin: um app que ajuda a manter o hábito de controlar o dinheiro"
           subtitle="Projeto em equipe na Fatec: pesquisa, requisitos e protótipo de um app de finanças pessoais. Em 2026, transformei o protótipo em um MVP funcional, com registro de gastos, metas, alertas, relatórios e uma assistente que transforma dados em orientação."
           facts={[
-            /* TODO: Luiza preencher (confirmar o papel na equipe e se o MVP é individual) */
-            {
-              label: "Meu papel",
-              value: "[CONFIRMAR: ex.: UX/UI Designer na equipe de 4 pessoas (pesquisa, protótipo e testes)] · MVP funcional: [CONFIRMAR: projeto individual]",
-            },
+            /* TODO: Luiza preencher (confirmar se o MVP é individual) */
+            { label: "Meu papel", value: "UX/UI Designer · MVP funcional: [CONFIRMAR: projeto individual]" },
             { label: "Quando", value: "Pesquisa e protótipo em 2025 · MVP funcional em 2026" },
             { label: "Contexto", value: "Sistemas para Internet, Fatec Baixada Santista “Rubens Lara”" },
-            { label: "Equipe", value: "Leonardo S. de Freitas, Luiza Menezes, Renan Ewbank e Yan Kairalla" },
+            { label: "Equipe", value: "Projeto acadêmico em grupo" },
             { label: "Plataforma", value: "App mobile (web app mobile-first)" },
             { label: "Ferramentas", value: "Figma · Google Forms · ChatGPT e Claude (requisitos) · Figma Make com IA (MVP)" },
           ]}
