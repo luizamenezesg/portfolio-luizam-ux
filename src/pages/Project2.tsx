@@ -286,10 +286,8 @@ const Project2 = () => {
           title="Centro de Línguas Fatec: um hub acadêmico para o aluno"
           subtitle="A gestão acadêmica do Centro de Línguas da Fatec Baixada Santista estava espalhada entre Teams, e-mail e OneDrive. Projetei um sistema único onde o aluno acompanha cursos, tarefas, notas, agenda e certificados sem depender da secretaria."
           facts={[
-            // TODO: Luiza preencher — confirmar se o projeto foi individual ou em equipe
-            { label: "Meu papel", value: "UX e Product Designer, trabalho voluntário [CONFIRMAR: projeto individual ou em equipe? com quem?]" },
-            // TODO: Luiza preencher — ano do protótipo
-            { label: "Quando", value: "[PREENCHER: ano do protótipo] · MVP funcional em 2026" },
+            { label: "Meu papel", value: "UX e Product Designer em projeto coletivo, trabalho voluntário" },
+            { label: "Quando", value: "Protótipo em 2024 · MVP funcional em 2026" },
             { label: "Para quem", value: "Alunos, professores e coordenação do Centro de Línguas (Centro Paula Souza)" },
             { label: "Plataforma", value: "Sistema web (desktop)" },
             { label: "Ferramentas", value: "Figma e FigJam · Figma Make com IA (MVP)" },
