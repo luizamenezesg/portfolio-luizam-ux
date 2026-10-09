@@ -56,10 +56,9 @@ const PERSONAS: { name: string; age: number; job: string; quote: React.ReactNode
   { name: "Mariana", age: 28, job: "Analista de marketing", quote: "“Sinto que nunca consigo acompanhar o que gasto e como posso economizar para alcançar meus sonhos.”" },
   { name: "Ana", age: 30, job: "Professora", quote: "“Não tenho ideia de como planejar meu futuro financeiro e isso me deixa ansiosa.”" },
   { name: "Carlos", age: 45, job: "Comerciante", quote: "“Minhas finanças são confusas e eu gostaria de entender melhor como posso organizar tudo.”" },
-  /* TODO: Luiza preencher as frases de Ricardo, Fernanda e Lucas */
-  { name: "Ricardo", age: 35, job: "Engenheiro civil", quote: "[PREENCHER: frase da proto-persona]" },
-  { name: "Fernanda", age: 26, job: "Designer gráfica", quote: "[PREENCHER: frase da proto-persona]" },
-  { name: "Lucas", age: 20, job: "Estagiário de TI · foco em investimentos", quote: "[PREENCHER: frase da proto-persona]" },
+  { name: "Ricardo", age: 35, job: "Engenheiro civil", quote: "“Meus investimentos estão espalhados em várias contas e eu gostaria de ter uma visão consolidada.”" },
+  { name: "Fernanda", age: 26, job: "Designer gráfica", quote: "“Quero fazer meu dinheiro render mais, mas não sei por onde começar.”" },
+  { name: "Lucas", age: 20, job: "Estagiário de TI · foco em investimentos", quote: "“Levo muito tempo para organizar minhas finanças e gostaria de ter um controle melhor sobre meus investimentos.”" },
 ];
 
 const REQUIREMENTS: [string, string, string][] = [
@@ -490,9 +489,8 @@ const Project3 = () => {
               {personas && (
                 <NarrowImage src={personas} alt="Proto-personas do PlanejaDin criadas pela equipe" onOpen={openLightbox} />
               )}
-              {/* TODO: Luiza preencher (confirmar se essa foi a decisão da equipe) */}
               <Insight label="Decisão de escopo">
-                Três personas pediam investimentos e integração com bancos. Deixamos isso para depois e priorizamos o que resolvia o hábito: registrar, entender e planejar. [CONFIRMAR: essa foi a decisão da equipe?]
+                Três personas pediam investimentos e integração com bancos. Deixamos isso para depois e priorizamos o que resolvia o hábito: registrar, entender e planejar.
               </Insight>
             </section>
 
@@ -696,9 +694,7 @@ const Project3 = () => {
                   </li>
                 ))}
               </ol>
-              {/* TODO: Luiza preencher (nº de participantes e observações). Se não houver dados, apagar o [PREENCHER] e manter só a frase do relatório. */}
               <Body>
-                <p>[PREENCHER: quantas pessoas participaram e o que observamos]</p>
                 <p>
                   Os testes foram iniciais e apontaram a criação e o acompanhamento de metas como o principal ponto a refinar.
                 </p>
@@ -906,10 +902,10 @@ const Project3 = () => {
 
             <Divider />
 
-            {/* 12. Aprendizados e próximos passos */}
+            {/* 12. Aprendizados */}
             <section className="mb-8">
               <SectionLabel>Conclusão</SectionLabel>
-              <SectionTitle>Aprendizados e próximos passos</SectionTitle>
+              <SectionTitle>O que ficou de aprendizado</SectionTitle>
 
               <ul className="space-y-6 my-8">
                 {[
@@ -925,17 +921,6 @@ const Project3 = () => {
                   </li>
                 ))}
               </ul>
-
-              <SubTitle>Próximos passos</SubTitle>
-              <BulletList
-                items={[
-                  "Repetir o teste de navegação no MVP com 5 pessoas e registrar sucesso e tempo",
-                  "Login real e sincronização entre dispositivos (Supabase)",
-                  "Integração com bancos (Open Finance), que apareceu na pesquisa",
-                  "Din com modelo de IA, mantendo as respostas baseadas nos dados do usuário",
-                  "Gamificação de metas",
-                ]}
-              />
 
               <Insight label="Diferencial">
                 O PlanejaDin não é apenas um app de controle financeiro. Ele foi pensado como um sistema de apoio ao comportamento financeiro, ajudando o usuário não só a registrar, mas a entender suas finanças e ser capaz de tomar decisões para ajustá-las.
