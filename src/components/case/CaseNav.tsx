@@ -4,7 +4,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 const CASES = [
   { slug: "/projeto/comparacao-precos", title: "Comparação de Preços", subtitle: "Economizando" },
   { slug: "/projeto/gestao-academica", title: "Gestão Acadêmica", subtitle: "Centro de Línguas Fatec" },
-  { slug: "/projeto/planejadin", title: "Planejadin", subtitle: "Gestão financeira pessoal" },
+  { slug: "/projeto/planejadin", title: "PlanejaDin", subtitle: "Gestão financeira pessoal" },
 ];
 
 /** Cards "Case anterior" e "Próximo case" no fim de cada página de case. */
