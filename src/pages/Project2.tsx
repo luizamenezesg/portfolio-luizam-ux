@@ -289,7 +289,7 @@ const Project2 = () => {
             { label: "Meu papel", value: "UX e Product Designer em projeto coletivo, trabalho voluntário" },
             { label: "Quando", value: "Protótipo em 2024 · MVP funcional em 2026" },
             { label: "Para quem", value: "Alunos, professores e coordenação do Centro de Línguas (Centro Paula Souza)" },
-            { label: "Plataforma", value: "Sistema web (desktop)" },
+            { label: "Plataforma", value: "Sistema web, pensado para desktop e responsivo para celular" },
             { label: "Ferramentas", value: "Figma e FigJam · Figma Make com IA (MVP)" },
             { label: "Base visual", value: "Guia de estilo do Centro Paula Souza" },
           ]}
@@ -347,7 +347,7 @@ const Project2 = () => {
               <SubTitle>Competências neste case</SubTitle>
               <div className="rounded-xl border border-border bg-card divide-y divide-border">
                 {[
-                  { label: "UX Research", items: ["Levantamento de requisitos com stakeholders", "Mapeamento de processos atuais", "Identificação de dores"] },
+                  { label: "UX Research", items: ["Levantamento de requisitos com stakeholders", "Questionário online", "Mapeamento de processos atuais", "Identificação de dores"] },
                   { label: "Product Design", items: ["Arquitetura da informação", "Priorização", "Fluxos de navegação", "Definição de MVP", "Métricas de sucesso"] },
                   { label: "UI Design", items: ["Wireframes", "Interface em alta fidelidade", "Sistema visual", "Aplicação de design system institucional", "Protótipo navegável"] },
                 ].map((group) => (
@@ -401,8 +401,7 @@ const Project2 = () => {
                 <p>
                   Antes de propor qualquer solução, conversei com alunos, professores e coordenação para entender como cada um lidava com os processos no dia a dia.
                 </p>
-                {/* TODO: Luiza preencher — método de pesquisa e número de participantes por perfil */}
-                <p>[PREENCHER: método — entrevistas, conversas informais, observação? quantas pessoas de cada perfil?]</p>
+                <p>Usei um questionário online para entender quais requisitos eram essenciais no sistema.</p>
                 <p>Cada necessidade virou um requisito. Na tabela, mostro onde cada um foi resolvido no sistema:</p>
               </Body>
 
@@ -465,7 +464,6 @@ const Project2 = () => {
                 </p>
               </Body>
 
-              {/* TODO: Luiza preencher — confirmar se os motivos das mudanças em cada par estão corretos */}
               <WireframePair
                 title="Página inicial do aluno"
                 wireframe={{ src: wireframe1, ...SIZE_WIREFRAME_SMALL }}
@@ -718,8 +716,7 @@ const Project2 = () => {
                   "Teste de usabilidade com 5 alunos, com tarefas como “descobrir quantas faltas você tem” e “enviar uma atividade”.",
                   "Validar as telas do professor e da secretaria, que o MVP introduz.",
                   "Revisar acessibilidade: contraste do texto branco sobre vinho e petróleo e navegação por teclado.",
-                  // TODO: Luiza preencher — confirmar se muitos alunos acessam pelo celular
-                  "Versão mobile, já que muitos alunos acessam pelo celular [CONFIRMAR].",
+                  "Validar a versão responsiva no celular com alunos, já que o sistema foi pensado primeiro para desktop.",
                 ]}
               />
             </section>
