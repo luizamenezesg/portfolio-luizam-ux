@@ -1,4 +1,8 @@
-import { Mail, Linkedin, FileText } from "lucide-react";
+import { Mail, Linkedin, FileText, MessageCircle } from "lucide-react";
+
+const WHATSAPP_URL = `https://wa.me/5513991598181?text=${encodeURIComponent(
+  "Olá, Luiza. Olhei seu portfólio e quero conversar sobre uma oportunidade na área de Produto Digital / UX Designer"
+)}`;
 
 const ContactSection = () => {
   return (
@@ -34,6 +38,15 @@ const ContactSection = () => {
           >
             <Mail size={16} />
             E-mail
+          </a>
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 border border-border bg-transparent text-foreground font-body font-medium text-sm px-6 py-3 rounded-lg hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          >
+            <MessageCircle size={16} />
+            WhatsApp
           </a>
         </div>
       </div>
