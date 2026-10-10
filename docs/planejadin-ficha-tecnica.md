@@ -3,7 +3,7 @@
 ## Em uma frase
 [MVP em funcionamento](https://cost-powder-53339892.figma.site) · [Protótipo no Figma](https://www.figma.com/proto/JftpPpk6ONr3l2XrQVK38H/PlanejaDin?page-id=57%3A8&node-id=57-191&starting-point-node-id=57%3A191&t=XJN1wavmKtSqNHM9-1) · Pesquisa e protótipo em 2025 (equipe) · MVP em 2026
 
-App mobile de finanças pessoais para quem começa a controlar o dinheiro e abandona: registro rápido, metas, limites por categoria, alertas, relatórios e a Din, uma assistente que responde com base nos dados do usuário. Pesquisa, requisitos e protótipo feitos em um projeto acadêmico em grupo na Fatec Baixada Santista "Rubens Lara", com Luiza Menezes como UX/UI Designer; MVP funcional gerado com IA no Figma Make em 2026 por Luiza Menezes [CONFIRMAR: projeto individual].
+App mobile de finanças pessoais para quem começa a controlar o dinheiro e abandona: registro rápido, metas, limites por categoria, alertas, relatórios e a Din, uma assistente que responde com base nos dados do usuário. Pesquisa, requisitos e protótipo feitos em um projeto acadêmico em grupo na Fatec Baixada Santista "Rubens Lara", com Luiza Menezes como UX/UI Designer; MVP funcional gerado com IA no Figma Make em 2026 por Luiza Menezes, como projeto individual.
 
 ## 1. Requisitos
 ### Requisitos de negócio
@@ -33,7 +33,7 @@ App mobile de finanças pessoais para quem começa a controlar o dinheiro e aban
 - Privacidade: opção de ocultar valores.
 - Acessibilidade: contraste AA, foco visível, alvos de toque de 44px, gráficos com resumo em texto.
 - Dados persistidos no navegador.
-- Código tipado e testado.
+- Código tipado (TypeScript).
 
 ### Regras de negócio
 - Saldo: receitas − despesas pagas; saldo projetado inclui recorrentes e contas a pagar.
@@ -54,7 +54,6 @@ App mobile de finanças pessoais para quem começa a controlar o dinheiro e aban
 | Gráficos | Recharts | Despesas por categoria e evolução do saldo |
 | Ícones | Lucide | Ícones da interface |
 | Build | Vite | Servidor de desenvolvimento e build |
-| Testes | Vitest [CONFIRMAR] | Testes unitários das regras |
 
 ## 3. Arquitetura
 SPA (single-page application) que roda no navegador, sem servidor próprio. Interface, regras de negócio e dados ficam em camadas separadas (padrões Service e Repository). Estrutura:
@@ -118,7 +117,7 @@ Em equipe (2025): questionário no Google Forms com fluxos condicionais (18 resp
 
 No MVP (2026): documento de requisitos com contexto, identidade visual, 20 telas, regras de negócio, dados de demonstração, arquitetura e critérios de aceite → prompt engineering no Figma Make → revisão tela a tela contra os 4 fluxos do teste → MVP com 19 telas e 9 fluxos.
 
-Identidade visual: verde #237A57, roxo #6B3FA0, verde claro #D6EDE3, lilás #D9C8EC, vermelho #E5484D (só para erro e limite estourado) [CONFIRMAR hex]; Nunito [CONFIRMAR] em títulos e valores, Roboto em textos.
+Identidade visual: verde #237A57, roxo #6B3FA0, verde claro #D6EDE3, lilás #D9C8EC, vermelho #E5484D (só para erro e limite estourado); Nunito [CONFIRMAR] em títulos e valores, Roboto em textos.
 
 ## 9. Limitações e próximos passos
 - Os dados ficam no navegador; não há sincronização entre dispositivos.

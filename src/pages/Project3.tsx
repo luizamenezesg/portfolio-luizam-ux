@@ -260,8 +260,7 @@ const Project3 = () => {
           title="PlanejaDin: um app que ajuda a manter o hábito de controlar o dinheiro"
           subtitle="Projeto em equipe na Fatec: pesquisa, requisitos e protótipo de um app de finanças pessoais. Em 2026, transformei o protótipo em um MVP funcional, com registro de gastos, metas, alertas, relatórios e uma assistente que transforma dados em orientação."
           facts={[
-            /* TODO: Luiza preencher (confirmar se o MVP é individual) */
-            { label: "Meu papel", value: "UX/UI Designer · MVP funcional: [CONFIRMAR: projeto individual]" },
+            { label: "Meu papel", value: "UX/UI Designer no projeto em grupo · MVP funcional: projeto individual" },
             { label: "Quando", value: "Pesquisa e protótipo em 2025 · MVP funcional em 2026" },
             { label: "Contexto", value: "Sistemas para Internet, Fatec Baixada Santista “Rubens Lara”" },
             { label: "Equipe", value: "Projeto acadêmico em grupo" },
@@ -521,7 +520,7 @@ const Project3 = () => {
                   "Privacidade (opção de ocultar valores)",
                   "Acessibilidade (contraste AA, foco visível, alvos de toque de 44px, gráficos com resumo em texto)",
                   "Dados persistidos no navegador",
-                  "Código tipado e testado",
+                  "Código tipado",
                 ]}
               />
 
@@ -617,8 +616,6 @@ const Project3 = () => {
                   Verde para dinheiro, segurança e crescimento; roxo para a Din e para as metas, separando o que é orientação do que é registro. Evitamos o vermelho para todo valor negativo: em finanças, isso aumenta a ansiedade. O vermelho ficou só para erro e limite estourado.
                 </p>
               </Body>
-              {/* TODO: Luiza preencher (conferir os hex no arquivo Figma) */}
-              <p className="font-body text-xs text-muted-foreground mt-4">[CONFIRMAR: códigos hex no arquivo Figma]</p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 mb-8">
                 <ColorSwatch color="#237A57" name="Verde" description="Ações principais, barra de navegação e receitas" />
                 <ColorSwatch color="#6B3FA0" name="Roxo" description="Din, metas e despesas nos gráficos" />
@@ -773,8 +770,7 @@ const Project3 = () => {
               )}
 
               <SubTitle>Ferramentas e linguagens</SubTitle>
-              {/* TODO: Luiza preencher (remover Vitest se não foi usado) */}
-              <Chips items={["Figma Make (IA)", "Prompt engineering", "TypeScript", "React", "React Router", "Tailwind CSS", "Recharts", "Lucide", "Vitest [CONFIRMAR]", "Vite"]} />
+              <Chips items={["Figma Make (IA)", "Prompt engineering", "TypeScript", "React", "React Router", "Tailwind CSS", "Recharts", "Lucide", "Vite"]} />
 
               <SubTitle>Arquitetura</SubTitle>
               <Body>
