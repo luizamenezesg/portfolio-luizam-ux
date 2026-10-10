@@ -29,7 +29,7 @@ const ContactSection = () => {
             Currículo
           </a>
           <a
-            href="mailto:contato@luizamenezes.com"
+            href="mailto:luizamenezesg@gmail.com"
             className="inline-flex items-center gap-2 border border-border bg-transparent text-foreground font-body font-medium text-sm px-6 py-3 rounded-lg hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           >
             <Mail size={16} />
