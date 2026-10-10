@@ -18,10 +18,10 @@ const projects = [
 },
 {
   slug: "/projeto/planejadin",
-  title: "Planejadin",
-  subtitle: "Product Design • Mobile MVP",
+  title: "PlanejaDin — Finanças pessoais",
+  subtitle: "UX Research • Product Design • UI Design • MVP",
   description:
-  "Aplicativo de gestão financeira pessoal estruturado através de benchmarking e prototipação de alta fidelidade, focado em simplificar regras de negócio complexas."
+  "App de finanças pessoais pensado para quem abandona o controle do dinheiro: registro rápido, metas, alertas e uma assistente que transforma dados em orientação. Da pesquisa em equipe ao MVP funcional."
 }];
 
 
