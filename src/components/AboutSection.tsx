@@ -17,7 +17,7 @@ const AboutSection = () => {
 
         <div className="space-y-4 font-body text-base text-foreground/85 leading-relaxed">
           <p>
-            Sou <strong>UX/UI Designer</strong> em Santos/SP e busco vaga como <strong>UX/UI ou Product Designer</strong>. Hoje atuo como designer freelancer no Lunae Estúdio Criativo e concluí Sistemas para Internet na Fatec Baixada Santista em 2026.
+            Sou <strong>UX/UI Designer</strong> em Santos/SP e busco vaga como <strong>UX/UI ou Product Designer</strong>. Hoje atuo como designer freelancer no <a href="https://www.lunae.design/" target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-2 hover:text-secondary">Lunae Estúdio Criativo</a> e concluí Sistemas para Internet na Fatec Baixada Santista em 2026.
           </p>
           <p>
             Na <strong>CodeCompany</strong>, atuei em três produtos, entre eles uma <strong>plataforma B2B</strong>: pesquisa, personas, fluxos, protótipos no Figma e manutenção do <strong>Design System</strong>. Acompanho a implementação e criei o <strong>PixTrim</strong> (ferramenta de recorte de backgrounds) <strong>do Figma ao código</strong> com apoio de IA.

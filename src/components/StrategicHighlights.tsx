@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "motion/react";
 const experiences = [
   {
     company: "Lunae Estúdio Criativo",
+    url: "https://www.lunae.design/",
     role: "Designer Freelancer",
     period: "Jul 2026 — Atual",
     description: "Interfaces e comunicação visual para clientes, com atendimento direto do briefing à entrega.",
@@ -146,7 +147,15 @@ const StrategicHighlights = () => {
               <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-4">
                 <div>
                   <h3 className="font-heading text-xl font-bold text-foreground">{exp.role}</h3>
-                  <p className="font-body text-primary font-medium">{exp.company}</p>
+                  <p className="font-body text-primary font-medium">
+                    {exp.url ? (
+                      <a href={exp.url} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-secondary">
+                        {exp.company}
+                      </a>
+                    ) : (
+                      exp.company
+                    )}
+                  </p>
                 </div>
                 <div className="flex items-center gap-2 text-muted-foreground font-body text-sm">
                   <Calendar size={14} />
