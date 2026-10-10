@@ -4,37 +4,48 @@ import { motion, AnimatePresence } from "motion/react";
 
 const experiences = [
   {
+    company: "Lunae Estúdio Criativo",
+    role: "Designer Freelancer",
+    period: "Jul 2026 — Atual",
+    description: "Interfaces e comunicação visual para clientes, com atendimento direto do briefing à entrega.",
+    highlights: [
+      "eJuice Resellers: criei interfaces com apoio de IA e banners no Photoshop.",
+      "Criei peças de social media com identidade visual e consistência de marca.",
+      "Atendi clientes diretamente: entendimento da demanda, propostas e ajustes por feedback."
+    ]
+  },
+  {
     company: "CodeCompany",
     role: "UX/UI Designer (Estágio)",
-    period: "Julho 2025 — Presente",
-    description: "Atuação estratégica em produtos SaaS complexos, unindo discovery, design e desenvolvimento front-end.",
+    period: "Jul 2025 — Mai 2026",
+    description: "Atuei em três produtos, da pesquisa ao handoff, em squad Scrum com Product Manager.",
     highlights: [
-      "iTransform: Design do Manager Hub e estruturação de indicadores estratégicos (IAT/IPT).",
-      "Storifly: Análise heurística e otimização de fluxos críticos de gestão de marca.",
-      "PixTrim: Atuação end-to-end do discovery ao desenvolvimento no código.",
-      "Manutenção de Design Systems e colaboração direta com Product Managers."
+      "PixTrim: atuei de ponta a ponta, da pesquisa ao desenvolvimento no Google AI Studio.",
+      "iTransform: desenhei o Manager Hub e organizei os indicadores estratégicos IPT e IAT.",
+      "Storifly: mapeei fricções nos fluxos críticos e propus melhorias dentro das regras de negócio.",
+      "Mantive o Design System/UI Kit e usei IA em pesquisa, síntese e documentação."
     ]
   },
   {
     company: "Centro de Línguas — Fatec Santos",
-    role: "UX/UI Designer (Voluntário)",
+    role: "UX/UI Designer (Projeto voluntário)",
     period: "Dez 2023 — Dez 2024",
-    description: "Desenvolvimento de um sistema de gestão acadêmica focado na otimização de processos internos.",
+    description: "Sistema de gestão acadêmica, do discovery ao estudo de caso publicado no Medium.",
     highlights: [
-      "Pesquisa com usuários e priorização de funcionalidades com stakeholders.",
-      "Criação de wireframes e protótipos de alta fidelidade para fluxos acadêmicos.",
-      "Melhoria na visualização de dados e organização de tarefas institucionais."
+      "Apliquei questionário e entrevistas com usuários na etapa de discovery.",
+      "Mapeei jornadas e fluxos e criei wireframes e protótipos no Figma.",
+      "Realizei testes de usabilidade e validei as soluções com stakeholders."
     ]
   },
   {
-    company: "EcoRodovias",
-    role: "Assistente Financeiro Pleno",
+    company: "Ecopátio Logística (Grupo EcoRodovias)",
+    role: "Assistente Financeira Pleno",
     period: "Dez 2017 — Jul 2021",
-    description: "Estruturação de processos e análise de dados em ambiente corporativo de alto volume.",
+    description: "Comecei como Auxiliar de Faturamento e cresci para Assistente Financeira Pleno.",
     highlights: [
-      "Mapeamento de processos AS-IS e TO-BE para implementação de manuais operacionais.",
-      "Análise de dados financeiros e elaboração de relatórios gerenciais.",
-      "Validação de melhorias em sistemas internos junto ao time de TI (homologação)."
+      "Criei e implantei o Manual de Procedimentos do Faturamento: AS-IS, TO-BE e treinamento.",
+      "Elaborei relatórios gerenciais e acompanhei indicadores da área.",
+      "Levantei necessidades de usuários internos e testei novas funcionalidades em homologação com TI."
     ]
   }
 ];
@@ -104,7 +115,7 @@ const StrategicHighlights = () => {
               <History size={32} />
             </div>
             <h3 className="font-heading text-xl font-bold text-foreground mb-2 group-hover:text-white transition-colors">Trajetória Profissional</h3>
-            <p className="font-body text-sm text-muted-foreground group-hover:text-white/80 transition-colors">Estágio em UX/UI, Voluntariado e background financeiro.</p>
+            <p className="font-body text-sm text-muted-foreground group-hover:text-white/80 transition-colors">Freelancer, estágio em UX/UI, voluntariado e financeiro.</p>
           </button>
 
           {/* Differential Button */}
@@ -116,7 +127,7 @@ const StrategicHighlights = () => {
               <Zap size={32} />
             </div>
             <h3 className="font-heading text-xl font-bold text-foreground mb-2 group-hover:text-white transition-colors">Meu Diferencial</h3>
-            <p className="font-body text-sm text-muted-foreground group-hover:text-white/80 transition-colors">O olhar analítico entre Negócio, Design e Código.</p>
+            <p className="font-body text-sm text-muted-foreground group-hover:text-white/80 transition-colors">Rigor de processos, do problema ao código.</p>
           </button>
         </div>
       </div>
@@ -167,19 +178,25 @@ const StrategicHighlights = () => {
           <div className="space-y-4">
             <h4 className="font-heading text-lg font-bold text-primary">Processos & Rigor</h4>
             <p className="font-body text-base text-foreground/85 leading-relaxed">
-              Minha experiência no setor financeiro consolidou uma forte <strong>visão analítica</strong> e o rigor necessário para lidar com <strong>fluxos complexos</strong> e <strong>KPIs</strong>. Essa disciplina hoje sustenta minha capacidade de organizar <strong>arquiteturas de informação</strong> e tomar <strong>decisões de design embasadas em dados</strong>.
+              Na Ecopátio, criei e implantei de ponta a ponta o <strong>Manual de Procedimentos do Faturamento</strong>: AS-IS, TO-BE, documentação e treinamento da equipe. Também testei novas funcionalidades com a TI em <strong>homologação</strong> antes da produção. Levo esse rigor para <strong>fluxos e regras de negócio</strong>.
             </p>
           </div>
           <div className="space-y-4">
             <h4 className="font-heading text-lg font-bold text-primary">Ponte com Desenvolvimento</h4>
             <p className="font-body text-base text-foreground/85 leading-relaxed">
-              Transito entre design e implementação, garantindo que a <strong>proposta de valor</strong> seja viável e fielmente executada. Atuo conectando <strong>estratégia</strong>, <strong>experiência</strong> e <strong>viabilidade técnica</strong>, garantindo a fluidez entre a definição do problema e a <strong>entrega final</strong>.
+              No iTransform, mantive e padronizei o <strong>Design System/UI Kit</strong>; no Storifly, organizei o Figma para <strong>handoff</strong>. No PixTrim, participei do desenvolvimento no Google AI Studio e vi o <strong>design virar produto</strong>. Acompanho a implementação e falo a língua do time de dev.
+            </p>
+          </div>
+          <div className="space-y-4">
+            <h4 className="font-heading text-lg font-bold text-primary">IA no Processo</h4>
+            <p className="font-body text-base text-foreground/85 leading-relaxed">
+              Na CodeCompany, usei <strong>IA para apoiar pesquisa, síntese</strong>, hipóteses e documentação. No PixTrim, ela ajudou a levar o design ao código; na Lunae, a criar interfaces para a <strong>eJuice Resellers</strong>. Uso a IA para acelerar etapas, não para substituir a validação.
             </p>
           </div>
         </div>
         <div className="mt-10 p-6 bg-accent/20 rounded-xl border border-border">
           <p className="font-body text-sm text-foreground/80 italic text-center">
-            "Desenvolvo soluções centradas no usuário com foco em gerar impacto real no produto e no negócio."
+            "Organizo o problema, desenho a solução e acompanho até ela virar produto."
           </p>
         </div>
       </Modal>

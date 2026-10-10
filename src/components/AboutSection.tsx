@@ -1,11 +1,11 @@
 import { Target, Search, PenTool, TrendingUp, Code } from "lucide-react";
 
 const atuacao = [
-  { icon: Target, text: "Mapeamento de problemas e fluxos" },
-  { icon: Search, text: "Pesquisa e estruturação de insights" },
-  { icon: PenTool, text: "Prototipação de soluções escaláveis" },
-  { icon: TrendingUp, text: "Decisões embasadas em dados" },
-  { icon: Code, text: "Colaboração técnica com desenvolvimento" }
+  { icon: Target, text: "Definição do problema e dos fluxos" },
+  { icon: Search, text: "Pesquisa e entrevistas com usuários" },
+  { icon: PenTool, text: "Wireframes e protótipos no Figma" },
+  { icon: TrendingUp, text: "Testes de usabilidade e iteração" },
+  { icon: Code, text: "Handoff organizado para o dev" }
 ];
 
 
@@ -17,16 +17,13 @@ const AboutSection = () => {
 
         <div className="space-y-4 font-body text-base text-foreground/85 leading-relaxed">
           <p>
-            Sou <strong>UX Designer</strong> focado em <strong>Design de Produto e Estratégia</strong>, desenvolvendo soluções digitais que equilibram <strong>necessidades do usuário</strong>, <strong>viabilidade técnica</strong> e <strong>objetivos de negócio</strong>.
+            Sou <strong>UX/UI Designer</strong> em Santos/SP e busco vaga como <strong>UX/UI ou Product Designer</strong>. Hoje atuo como designer freelancer no Lunae Estúdio Criativo e concluí Sistemas para Internet na Fatec Baixada Santista em 2026.
           </p>
           <p>
-            Com experiência em <strong>produtos B2C</strong>, acompanho o ciclo desde o <strong>discovery estratégico</strong> até a <strong>implementação técnica em front-end</strong>. Minha atuação envolve a estruturação de <strong>jornadas do usuário</strong>, gestão de <strong>Design Systems</strong> e aplicação de <strong>análises heurísticas</strong>, sempre focando em otimizar fluxos para reduzir fricção e gerar impacto real no produto.
+            Na <strong>CodeCompany</strong>, atuei em três produtos, entre eles uma <strong>plataforma B2B</strong>: pesquisa, personas, fluxos, protótipos no Figma e manutenção do <strong>Design System</strong>. Acompanho a implementação e criei o <strong>PixTrim</strong> (ferramenta de recorte de backgrounds) <strong>do Figma ao código</strong> com apoio de IA.
           </p>
           <p>
-            Minha trajetória de 7 anos no setor administrativo-financeiro consolidou uma forte <strong>visão analítica</strong>. A expertise em mapear <strong>processos (AS-IS e TO-BE)</strong> e estruturar manuais de procedimentos é o que hoje sustenta minha capacidade de organizar <strong>arquiteturas de informação</strong> e tomar <strong>decisões baseadas em dados</strong>.
-          </p>
-          <p>
-            Busco oportunidades para aplicar meu perfil híbrido em <strong>pesquisa, design, estratégia e código</strong>, criando soluções que sejam funcionais, escaláveis e resolvam problemas reais.
+            Antes do UX, tive experiência administrativa e quase 4 anos no <strong>financeiro</strong> da Ecopátio Logística (Grupo EcoRodovias), onde criei o <strong>Manual de Procedimentos do Faturamento</strong> (AS-IS e TO-BE). Essa experiência me possibilitou entender <strong>fluxos, regras de negócio</strong> e documentação para handoff.
           </p>
         </div>
 
