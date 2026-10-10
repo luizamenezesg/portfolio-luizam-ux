@@ -625,10 +625,9 @@ const Project3 = () => {
               </div>
 
               <SubTitle>Tipografia</SubTitle>
-              {/* TODO: Luiza preencher (confirmar Nunito nos títulos) */}
               <Body>
                 <p>
-                  Nunito [CONFIRMAR] em títulos e valores: arredondada, mais acolhedora para um tema que gera tensão. Roboto em textos e campos.
+                  Nunito em títulos e valores: arredondada, mais acolhedora para um tema que gera tensão. Roboto em textos e campos.
                 </p>
               </Body>
               <FontSpecimen

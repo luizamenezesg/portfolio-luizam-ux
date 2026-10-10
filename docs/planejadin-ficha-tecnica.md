@@ -117,7 +117,7 @@ Em equipe (2025): questionário no Google Forms com fluxos condicionais (18 resp
 
 No MVP (2026): documento de requisitos com contexto, identidade visual, 20 telas, regras de negócio, dados de demonstração, arquitetura e critérios de aceite → prompt engineering no Figma Make → revisão tela a tela contra os 4 fluxos do teste → MVP com 19 telas e 9 fluxos.
 
-Identidade visual: verde #237A57, roxo #6B3FA0, verde claro #D6EDE3, lilás #D9C8EC, vermelho #E5484D (só para erro e limite estourado); Nunito [CONFIRMAR] em títulos e valores, Roboto em textos.
+Identidade visual: verde #237A57, roxo #6B3FA0, verde claro #D6EDE3, lilás #D9C8EC, vermelho #E5484D (só para erro e limite estourado); Nunito em títulos e valores, Roboto em textos.
 
 ## 9. Limitações e próximos passos
 - Os dados ficam no navegador; não há sincronização entre dispositivos.
